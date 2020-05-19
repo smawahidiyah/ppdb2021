@@ -15,6 +15,14 @@ class CreatePpdbsTable extends Migration
     {
         Schema::create('ppdbs', function (Blueprint $table) {
             $table->id();
+            $table->string('namapd');
+            $table->enum('kelaminpd', ['L', 'P']);
+            $table->string('nisnpd');
+            $table->string('nikpd');
+            $table->string('tempatlahirpd');
+            $table->date('tanggallahirpd');
+            $table->enum('agamapd', ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha', 'Kong Hu Chu', 'Kepercayaan Kepada Tuhan YME']);
+            $table->string('disabilitaspd');
             $table->timestamps();
         });
     }
