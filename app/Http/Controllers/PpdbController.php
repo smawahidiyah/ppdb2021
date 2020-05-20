@@ -19,13 +19,16 @@ class PpdbController extends Controller
     	$request->validate([
     		'namapd' => 'required',
     		'kelaminpd' => 'required',
-    		'nisnpd' => 'required|max:10|min:10|numeric|unique:ppdb',
-    		'nikpd' => 'required|max:16|min:16|numeric|uniqueppdb',
+    		'nisnpd' => 'required|max:10|min:10|unique:ppdbs',
+    		'nikpd' => 'required|max:16|min:16|unique:ppdbs',
     		'tempatlahirpd' => 'required',
     		'tanggallahirpd' => 'required',
     		'namaayah' => 'required',
     		'namaibu' => 'required',
     		'namawali' => 'required',
-    	])
+    	]);
+
+        Ppdb::create($request->all());
+        return redirect('/ppdb_smawa_2020');
     }
 }

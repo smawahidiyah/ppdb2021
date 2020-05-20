@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/ppdb_smawa_2020', 'PpdbController@register');
+
+Route::post('/postregister', 'PpdbController@postregister')->name('postregister');
