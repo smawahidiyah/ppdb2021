@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="{{asset('css/customs.css')}}">
-    <title>PPDB SMA Wahidiyah 2020</title>
+    <title>PPDB SMA Wahidiyah Kediri 2020</title>
   </head>
   <body style="background-image: url(subtle_surface.png);">
 
