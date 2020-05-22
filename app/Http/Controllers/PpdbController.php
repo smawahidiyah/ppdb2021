@@ -22,7 +22,7 @@ class PpdbController extends Controller
 
     public function postregister(Request $request)
     {
-    	$request->validate([
+    	$validated = $request->validate([
     		'namapd' => 'required',
     		'kelaminpd' => 'required',
     		'nisnpd' => 'required|max:10|min:10|unique:ppdbs',
@@ -32,9 +32,12 @@ class PpdbController extends Controller
     		'namaayah' => 'required',
     		'namaibu' => 'required',
     	]);
-
-        Ppdb::create($request->all());
-        return redirect('/sukses');
+        if ($validated->fails()) {
+            return redirect()->back()->withErrors($validated)->withInput();
+        }else{
+            Ppdb::create($request->all());
+            return redirect('/sukses');
+        }
     }
 
     public function sukses()
