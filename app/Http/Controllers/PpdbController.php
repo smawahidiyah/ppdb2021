@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Ppdb;
 
 class PpdbController extends Controller
@@ -22,7 +23,7 @@ class PpdbController extends Controller
 
     public function postregister(Request $request)
     {
-    	$validated = $request->validate([
+    	$validated = Validator::make($request->all(), [
     		'namapd' => 'required',
     		'kelaminpd' => 'required',
     		'nisnpd' => 'required|max:10|min:10|unique:ppdbs',
