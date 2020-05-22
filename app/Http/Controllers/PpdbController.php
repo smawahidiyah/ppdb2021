@@ -9,6 +9,12 @@ use App\Ppdb;
 
 class PpdbController extends Controller
 {
+    public function index()
+    {
+        return view('ppdb.index');
+    }
+
+
     public function register()
     {
     	return view('ppdb.registrasi');
@@ -25,10 +31,14 @@ class PpdbController extends Controller
     		'tanggallahirpd' => 'required',
     		'namaayah' => 'required',
     		'namaibu' => 'required',
-    		'namawali' => 'required',
     	]);
 
         Ppdb::create($request->all());
-        return redirect('/ppdb_smawa_2020');
+        return redirect('/sukses');
+    }
+
+    public function sukses()
+    {
+        return view('ppdb.sukses');
     }
 }

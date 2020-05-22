@@ -7,15 +7,6 @@
         <h2 class="text-center">Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2020/2021</h2>
     </div>
 </div>
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 <section class="container container-fluid py-5">
     <form method="post" action="{{route('postregister')}}">
     @csrf
@@ -24,15 +15,25 @@
                 <h3 class="card-tittle">Form Pendaftaran</h3>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <div class="card mb-3">
                     <div class="card-header">
-                        <div class="card-tittle h4">Data Pribadi</div>
+                        <div class="card-tittle h4">Data Pribadi Peserta Didik</div>
                     </div>
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="namapd" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
                                 <input type="text" name="namapd" id="namapd" class="form-control" required>
+                                <small class="form-text text-muted">Sesuai dengan dokumen resmi (KK, Akta kelahiran atau ijazah sebelumnya.)</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -48,18 +49,21 @@
                             <label for="nisnpd" class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-3">
                                 <input type="text" name="nisnpd" id="nisnpd" class="form-control" required>
+                                <small class="form-text text-muted">Sesuai dengan Ijazah sebelumnya atau NISN dari SMP/MTs sekolah asal.</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikpd" class="col-sm-2 col-form-label">NIK</label>
                             <div class="col-sm-3">
                                 <input type="text" name="nikpd" id="nikpd" class="form-control" required>
+                                <small class="form-text text-muted">Sesuai dengan KK atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tempatlahirpd" class="col-sm-2 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-5">
                                 <input type="text" name="tempatlahirpd" id="tempatlahirpd" class="form-control" required>
+                                <small class="form-text text-muted">Sesuai dengan Akta Lahir atau KK.</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -72,6 +76,7 @@
                             <label for="regaktalahirpd" class="col-sm-2 col-form-label">No. Registrasi Akta Lahir</label>
                             <div class="col-sm-5">
                                 <input type="text" name="regaktalahirpd" id="regaktalahirpd" class="form-control">
+                                <small class="form-text text-muted">Sesuai dengan Akta Kelahiran</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -198,6 +203,7 @@
                             <label for="anakkeberapa" class="col-sm-2 col-form-label">Anak ke-berapa (berdasarkan KK)</label>
                             <div class="col-sm-2">
                                 <input type="text" name="anakkeberapa" id="anakkeberapa" class="form-control">
+                                <small class="form-text text-muted">Sesuai dengan urutan Kartu Keluarga</small>
                             </div>
                         </div>
                     </div>
@@ -211,12 +217,14 @@
                             <label for="namaayah" class="col-sm-2 col-form-label">Nama Ayah Kandung</label>
                             <div class="col-sm-10">
                                 <input type="text" name="namaayah" id="namaayah" class="form-control" required>
+                                <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau Akta Kelahiran (Tanpa Gelar)</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikayah" class="col-sm-2 col-form-label">NIK Ayah Kandung</label>
                             <div class="col-sm-3">
                                 <input type="text" name="nikayah" id="nikayah" class="form-control">
+                                <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -292,12 +300,14 @@
                             <label for="namaibu" class="col-sm-2 col-form-label">Nama Ibu Kandung</label>
                             <div class="col-sm-10">
                                 <input type="text" name="namaibu" id="namaibu" class="form-control" required>
+                                <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau Akta Kelahiran (Tanpa Gelar)</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikibu" class="col-sm-2 col-form-label">NIK Ibu Kandung</label>
                             <div class="col-sm-3">
                                 <input type="text" name="nikibu" id="nikibu" class="form-control">
+                                <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -474,9 +484,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Daftar</button>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <div class="card-tittle text-center h4">Konfirmasi</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-sm-center">
+                                <div class="col col-sm-8">
+                                    <h4 class="text-center">Pastikan data yang anda masukkan benar. Silahkan lanjutkan pendaftaran dengan klik tombol dibawah ini.</h4>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <button class="btn btn-primary">Lanjutkan Pendaftaran</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
