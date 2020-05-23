@@ -23,6 +23,7 @@ class PpdbController extends Controller
 
     public function postregister(Request $request)
     {
+
     	$validated = Validator::make($request->all(), [
     		'namapd' => 'required',
     		'kelaminpd' => 'required',
@@ -32,7 +33,15 @@ class PpdbController extends Controller
     		'tanggallahirpd' => 'required',
     		'namaayah' => 'required',
     		'namaibu' => 'required',
-    	]);
+    	], [
+            'nisnpd.unique' => 'NISN yang digunakan telah terdaftar!',
+            'nikpd.unique' => 'NIK yang digunakan telah terdaftar!',
+            'nikpd.max' => 'NIK yang digunakan tidak boleh lebih dari 16 digit',
+            'nikpd.min' => 'NIK yang digunakan tidak boleh kurang dari 16 digit',
+            'nisnpd.max' => 'NISN yang digunakan tidak boleh lebih dari 10 digit',
+            'nisnpd.min' => 'NISN yang digunakan tidak boleh kurang dari 10 digit'
+        ]);
+
         if ($validated->fails()) {
             return redirect()->back()->withErrors($validated)->withInput();
         }else{
