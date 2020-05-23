@@ -11,7 +11,7 @@
         <div class="card col-sm-8">
             <div class="card-body">
                 <div class="card-tittle">
-                    <h2 class="text-center"><span class="badge badge-success">Peserta didik berhasil didaftarkan!</span></h2>
+                    <h3 class="p-sm-2 bg-success text-center text-white">Peserta didik berhasil didaftarkan!</h3>
                 </div>
                 <hr>
                 <div class="col-sm">

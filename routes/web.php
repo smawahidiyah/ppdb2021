@@ -26,4 +26,19 @@ Route::get('/', 'PpdbController@index');
 Route::get('/ppdb_smawa_2020', 'PpdbController@register')->name('ppdb_smawa_2020');
 
 Route::post('/postregister', 'PpdbController@postregister')->name('postregister');
+
 Route::get('/sukses', 'PpdbController@sukses');
+
+Route::get('/login', 'AuthController@login')->name('login');
+
+Route::post('/postlogin', 'AuthController@postlogin')->name('postlogin');
+
+Route::get('/register', 'AuthController@register')->name('register');
+
+Route::post('/postuser', 'AuthController@postuser')->name('postuser');
+
+Route::get('/logout', 'AuthController@logout');
+
+Route::middleware(['AuthSentinel'])->group(function(){
+    Route::get('/dasbor', 'PanelController@dasbor')->name('dasbor');
+});
