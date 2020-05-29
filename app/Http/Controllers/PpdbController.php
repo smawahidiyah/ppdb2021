@@ -54,4 +54,9 @@ class PpdbController extends Controller
     {
         return view('ppdb.sukses');
     }
+
+    public function countpd()
+    {
+
+    }
 }
