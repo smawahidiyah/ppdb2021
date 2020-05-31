@@ -43,3 +43,7 @@ Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('/dasbor', 'PanelController@dasbor')->name('dasbor');
     Route::get('/export', 'PanelController@export')->name('export');
 });
+
+Route::get('getdatapd', 'DataPDController@getdatapd')->name('getdatapd');
+
+Route::get('datapd', 'DataPDController@indexpd')->name('datapd');

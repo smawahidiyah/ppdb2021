@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Ppdb;
 use App\Exports\PpdbExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Datatables;
 
 class PanelController extends Controller
 {
@@ -21,4 +22,5 @@ class PanelController extends Controller
     {
         return Excel::download(new PpdbExport, 'ppbd.xlsx');
     }
+
 }
