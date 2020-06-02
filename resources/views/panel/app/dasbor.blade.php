@@ -1,15 +1,15 @@
 @extends('panel.base')
 @section('content')
 <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box">
+    <a class="info-box" href="{{route('datapd')}}">
         <span class="info-box-icon bg-info elevation-1">
             <i class="fas fa-users"></i>
         </span>
         <div class="info-box-content">
-            <span class="info-box-text">Total PD terdaftar</span>
-            <span class="info-box-number">{{$ppdbs}} Orang</span>
+            <span class="info-box-number" style="color: black;">{{$ppdbs}} orang terdaftar</span>
+            <span class="info-box-text" style="color: black;">Lihat semua</span>
         </div>
-    </div>
+    </a>
 </div>
 
 <div class="col-12 col-sm-6 col-md-3">

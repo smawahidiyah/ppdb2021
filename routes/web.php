@@ -33,8 +33,6 @@ Route::get('/login', 'AuthController@login')->name('login');
 
 Route::post('/postlogin', 'AuthController@postlogin')->name('postlogin');
 
-Route::get('/register', 'AuthController@register')->name('register');
-
 Route::post('/postuser', 'AuthController@postuser')->name('postuser');
 
 Route::get('/logout', 'AuthController@logout');
@@ -42,8 +40,9 @@ Route::get('/logout', 'AuthController@logout');
 Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('/dasbor', 'PanelController@dasbor')->name('dasbor');
     Route::get('/export', 'PanelController@export')->name('export');
+    Route::get('getdatapd', 'DataPDController@getdatapd')->name('getdatapd');
+    Route::get('datapd', 'DataPDController@indexpd')->name('datapd');
+    Route::get('/register', 'AuthController@register')->name('register');
 });
 
-Route::get('getdatapd', 'DataPDController@getdatapd')->name('getdatapd');
 
-Route::get('datapd', 'DataPDController@indexpd')->name('datapd');
