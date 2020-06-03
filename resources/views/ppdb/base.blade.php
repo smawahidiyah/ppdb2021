@@ -41,5 +41,10 @@ $("#nikpd").inputFilter(function(value) {
   return /^-?\d*$/.test(value);
 });
     </script>
+    <script type="text/javascript">
+            $(function () {
+                $('#tanggallahirpd').datetimepicker();
+            });
+        </script>
   </body>
 </html>

@@ -34,23 +34,28 @@
 
     <div>
       <div class="container py-5">
-        <div class="row">
-          <div class="col-6 mx-auto col-md-4 order-md-2">
-            <img src="{{asset('smawa.png')}}" width="250" class="img-fluid">
-          </div>
-          <div class="col-md-8 order-md-1 text-center text-md-left pr-md-5">
-            <h1 class="mb-3">PPDB Online SMA Wahidiyah Kediri</h1>
-            <p class="lead mb-4">
-              Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2020/2021.
-            </p>
-            <p>
-                <strong>Pendaftaran untuk peserta didik baru, untuk pendaftaran peserta didik pindah/mutasi silahkan menghubungi contact person sekolah ( 085231196513 / 085774015717 )</strong>
-            </p>
-            <div class="d-flex flex-column flex-md-row">
-              <a href="{{url('/ppdb_smawa_2020')}}" class="btn btn-lg btn-outline-primary mb-3 mr-md-3">Pendaftaran Baru</a>
-              <a href="#" class="btn btn-lg btn-outline-success mb-3 mr-md-3">Cek Pendaftaran</a>
+        <div class="row justify-content-center">
+            <form method="get" action="{{route('postcek')}}">
+                @csrf
+                <div class="card">
+                <div class="card-header">
+                    <div class="card-tittle">Cek pendaftaran PPDB Online</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nisnpd" class="col-md-3 col-form-label">NISN</label>
+                        <div class="col-8">
+                            <input type="text" name="nisnpd" id="nisnpd" class="form-control" required placeholder="Masukkan NISN">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success form-control">Cek Pendaftaran</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            </form>
         </div>
       </div>
     </div>

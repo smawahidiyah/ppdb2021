@@ -37,6 +37,12 @@ Route::post('/postuser', 'AuthController@postuser')->name('postuser');
 
 Route::get('/logout', 'AuthController@logout');
 
+Route::get('/hasilcek', 'PpdbController@cek')->name('hasilcek');
+
+Route::get('/formcek', 'PpdbController@formcek')->name('formcek');
+
+Route::get('/postcek', 'PpdbController@postcek')->name('postcek');
+
 Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('/dasbor', 'PanelController@dasbor')->name('dasbor');
     Route::get('/export', 'PanelController@export')->name('export');

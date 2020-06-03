@@ -55,8 +55,23 @@ class PpdbController extends Controller
         return view('ppdb.sukses');
     }
 
-    public function countpd()
+    public function hasilcek()
     {
+        return view('ppdb.cek');
+    }
 
+    public function formcek()
+    {
+        return view('ppdb.formcek');
+    }
+
+    public function postcek(Request $request)
+    {
+        $cek = $request->nisnpd;
+        ddd(DB::table('ppdbs')->where('nisnpd', $cek)->exists());
+
+        if (DB::table('ppdbs')->where('nisnpd', $cek->nisnpd)->exists()) {
+            return redirect('hasilcek');
+        }
     }
 }

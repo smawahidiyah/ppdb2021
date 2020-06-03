@@ -445,7 +445,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="telpibu">No HP/WA Ibu</label>
                             <div class="col-sm-4">
-                                <input type="text" name="telpibu" id="telpibu" class="form-control" value="{{ old('telpibu') }}">
+                                <input type="text" name="telpibu" id="telpibu" class="form-control" value="{{ old('telpibu') }}" required>
                             </div>
                         </div>
                         <div class="form-group row">
