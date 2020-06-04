@@ -46,6 +46,6 @@ class ppdb extends Model
         'telpwali',
         'tempattinggal',
         'kategorialumni',
-        'katorgtuaperonil'
+        'katorgtuapersonil'
     ];
 }
