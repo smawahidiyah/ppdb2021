@@ -42,11 +42,11 @@
                 <div class="card-body d-block">
                     <dl class="row">
                         <dt class="col-md-4">Nama</dt>
-                        <dd class="col-md-6">Hajir Asyafi'</dd>
+                        <dd class="col-md-6">{{$ppdbs->namapd}}</dd>
                         <dt class="col-md-4">NISN</dt>
-                        <dd class="col-md-6">1928374619</dd>
+                        <dd class="col-md-6">{{$ppdbs->nisnpd}}</dd>
                         <dt class="col-md-4">Tempat, tanggal lahir</dt>
-                        <dd class="col-md-6">Ogan Komering Ulu Timur, 09 Juni 1994</dd>
+                        <dd class="col-md-6">{{$ppdbs->tempatlahirpd}}, {{$ppdbs->tanggallahirpd}}</dd>
                     </dl>
                     <hr>
                     <p class="align-middle">Status Pendaftaran : <strong style="color: green;">Sudah Terdaftar </strong><i class="material-icons align-middle" style="color: green;">check_circle_outline</i></p>

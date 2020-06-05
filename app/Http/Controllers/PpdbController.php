@@ -57,7 +57,7 @@ class PpdbController extends Controller
 
     public function hasilcek()
     {
-        return view('ppdb.cek');
+        return view('ppdb.hasilcek');
     }
 
     public function formcek()
@@ -67,11 +67,11 @@ class PpdbController extends Controller
 
     public function postcek(Request $request)
     {
-        $cek = $request->nisnpd;
-        ddd(DB::table('ppdbs')->where('nisnpd', $cek)->exists());
+        $ppdbs = $request->all();
 
-        if (DB::table('ppdbs')->where('nisnpd', $cek->nisnpd)->exists()) {
-            return redirect('hasilcek');
+        if (DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists()== TRUE) {
+            dd(DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->get());
+            return view('ppdb.hasilcek',  ['ppdbs'=>$ppdbs]);
         }
     }
 }
