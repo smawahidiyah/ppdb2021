@@ -55,11 +55,6 @@ class PpdbController extends Controller
         return view('ppdb.sukses');
     }
 
-    public function hasilcek()
-    {
-        return view('ppdb.hasilcek');
-    }
-
     public function formcek()
     {
         return view('ppdb.formcek');
@@ -68,10 +63,12 @@ class PpdbController extends Controller
     public function postcek(Request $request)
     {
         $ppdbs = $request->all();
-
+        $cek = DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists();
         if (DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists()== TRUE) {
-            dd(DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->get());
-            return view('ppdb.hasilcek',  ['ppdbs'=>$ppdbs]);
+            $ppdbs = DB::table('ppdbs')->select('nisnpd', 'namapd', 'tempatlahirpd', 'tanggallahirpd')->where('nisnpd', $ppdbs['nisnpd'] )->get();
+            return view('ppdb.hasilcek')->with('ppdbs', $ppdbs)->with('cek', $cek);
+        }else{
+            return view('ppdb.hasilcek')->with('cek', $cek);
         }
     }
 }

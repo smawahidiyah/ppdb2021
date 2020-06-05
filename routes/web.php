@@ -37,8 +37,6 @@ Route::post('/postuser', 'AuthController@postuser')->name('postuser');
 
 Route::get('/logout', 'AuthController@logout');
 
-Route::get('/hasilcek', 'PpdbController@hasilcek')->name('hasilcek');
-
 Route::get('/formcek', 'PpdbController@formcek')->name('formcek');
 
 Route::get('/postcek', 'PpdbController@postcek')->name('postcek');

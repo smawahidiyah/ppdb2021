@@ -40,17 +40,25 @@
                     <div class="card-tittle">Cek pendaftaran PPDB Online</div>
                 </div>
                 <div class="card-body d-block">
-                    <dl class="row">
-                        <dt class="col-md-4">Nama</dt>
-                        <dd class="col-md-6">{{$ppdbs->namapd}}</dd>
-                        <dt class="col-md-4">NISN</dt>
-                        <dd class="col-md-6">{{$ppdbs->nisnpd}}</dd>
-                        <dt class="col-md-4">Tempat, tanggal lahir</dt>
-                        <dd class="col-md-6">{{$ppdbs->tempatlahirpd}}, {{$ppdbs->tanggallahirpd}}</dd>
-                    </dl>
-                    <hr>
-                    <p class="align-middle">Status Pendaftaran : <strong style="color: green;">Sudah Terdaftar </strong><i class="material-icons align-middle" style="color: green;">check_circle_outline</i></p>
-                    <p class="align-middle">Status Pendaftaran : <strong style="color: red;">Belum Terdaftar </strong><i class="material-icons align-middle" style="color: red;">clear</i></p>
+                        @if(($cek) === TRUE)
+                            @foreach($ppdbs as $ppdb)
+                            <dl class="row">
+                                <dt class="col-md-4">Nama</dt>
+                                <dd class="col-md-6">{{$ppdb->namapd}}</dd>
+                                <dt class="col-md-4">NISN</dt>
+                                <dd class="col-md-6">{{$ppdb->nisnpd}}</dd>
+                                <dt class="col-md-4">Tempat, tanggal lahir</dt>
+                                <dd class="col-md-6">{{$ppdb->tempatlahirpd}}, {{$ppdb->tanggallahirpd}}</dd>
+                            </dl>
+                            <hr>
+                            <p class="align-middle">Status Pendaftaran : <strong style="color: green;">Sudah Terdaftar </strong><i class="material-icons align-middle" style="color: green;">check_circle_outline</i></p>
+                            @endforeach
+                        @elseif(($cek) == FALSE)
+                        <p class="align-middle">Status Pendaftaran : <strong style="color: red;">Belum Terdaftar </strong><i class="material-icons align-middle" style="color: red;">clear</i></p>
+                        <hr>
+                        <p class="align-middle">Maaf NISN yang digunakan belum terdaftar. Silahkan klik tombol dibawah ini untuk melakukan pendaftaran.</p>
+                        <a href="ppdb_smawa_2020" class="btn btn-success">Pendaftaran Baru</a>
+                        @endif
                 </div>
             </div>
         </div>
