@@ -2,7 +2,8 @@
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
 
 @endsection
 
@@ -61,13 +62,14 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
 <script>
 $(function() {
     $('#datapd').DataTable({
         processing: true,
         serverSide: true,
+
         ajax: '{!! route('getdatapd') !!}',
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false },
@@ -77,7 +79,7 @@ $(function() {
             { data: 'telpayah', name: 'telpayah'},
             { data: 'namaibu', name: 'namaibu'},
             { data: 'telpibu', name: 'telpibu'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            { data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
 });
