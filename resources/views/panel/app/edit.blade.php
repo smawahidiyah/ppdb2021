@@ -1,4 +1,4 @@
-@extends('ppdb.base')
+@extends('panel.base')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     </div>
 </div>
 <section class="container container-fluid py-5">
-    <form method="post" action="{{route('postregister')}}">
+    <form method="post" action="{{route('updatepd', $ppdbs->ninspd)}}">
     @csrf
         <div class="card">
             <div class="card-header">
@@ -32,71 +32,71 @@
                         <div class="form-group row">
                             <label for="namapd" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
-                                <input type="text" name="namapd" id="namapd" class="form-control" required value="{{ old('namapd') }}" style="text-transform:uppercase;">
+                                <input type="text" name="namapd" id="namapd" class="form-control" required value="{{ $ppdbs->namapd }}" style="text-transform:uppercase;">
                                 <small class="form-text text-muted">Sesuai dengan dokumen resmi (KK, Akta kelahiran atau ijazah sebelumnya.)</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="kelaminpd">Jenis Kelamin</label>
                             <div class="col-sm-2">
-                                <select class="form-control" id="kelaminpd" name="kelaminpd" value="{{ old('kelaminpd') }}">
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
+                                <select class="form-control" id="kelaminpd" name="kelaminpd">
+                                    <option value="L" {{ ($ppdbs->kelaminpd) == "L" ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="P" {{ ($ppdbs->kelaminpd) == "P" ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nisnpd" class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-3">
-                                <input type="text" name="nisnpd" id="nisnpd" class="form-control" required value="{{ old('nisnpd') }}">
+                                <input type="text" name="nisnpd" id="nisnpd" class="form-control" required value="{{ $ppdbs->ninspd }}">
                                 <small class="form-text text-muted">Sesuai dengan Ijazah sebelumnya atau NISN dari SMP/MTs sekolah asal.</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikpd" class="col-sm-2 col-form-label">NIK</label>
                             <div class="col-sm-3">
-                                <input type="text" name="nikpd" id="nikpd" class="form-control" required value="{{ old('nikpd') }}">
+                                <input type="text" name="nikpd" id="nikpd" class="form-control" required value="{{ $ppdbs->nikpd }}">
                                 <small class="form-text text-muted">Sesuai dengan KK atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tempatlahirpd" class="col-sm-2 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-5">
-                                <input type="text" name="tempatlahirpd" id="tempatlahirpd" class="form-control" required value="{{ old('tempatlahirpd') }}">
+                                <input type="text" name="tempatlahirpd" id="tempatlahirpd" class="form-control" required value="{{ $ppdbs->tempatlahirpd }}">
                                 <small class="form-text text-muted">Sesuai dengan Akta Lahir atau KK.</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tanggallahirpd" class="col-sm-2 col-form-label">Tanggal Lahir</label>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggallahirpd" id="tanggallahirpd" class="form-control" required value="{{ old('tanggallahirpd') }}">
+                                <input type="date" name="tanggallahirpd" id="tanggallahirpd" class="form-control" required value="{{ $ppdbs->tanggallahirpd }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="regaktalahirpd" class="col-sm-2 col-form-label">No. Registrasi Akta Lahir</label>
                             <div class="col-sm-5">
-                                <input type="text" name="regaktalahirpd" id="regaktalahirpd" class="form-control" value="{{ old('regaktalahirpd') }}">
+                                <input type="text" name="regaktalahirpd" id="regaktalahirpd" class="form-control" value="{{ $ppdbs->regaktalahirpd }}">
                                 <small class="form-text text-muted">Sesuai dengan Akta Kelahiran</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="agamapd">Agama</label>
                             <div class="col-sm-2">
-                                <select class="form-control" id="agamapd" name="agamapd" value="{{ old('agamapd') }}">
-                                    <option value="Islam">Islam</option>
-                                    <option value="Kristen">Kristen</option>
-                                    <option value="Katholik">Khatolik</option>
-                                    <option value="Hindu">Hindu</option>
-                                    <option value="Budha">Budha</option>
-                                    <option value="Kong Hu Chu">Kong Hu Chu</option>
-                                    <option value="Kepercayaan Kepada Tuhan YME">Kepercayaan Kepada Tuhan YME</option>
+                                <select class="form-control" id="agamapd" name="agamapd">
+                                    <option value="Islam" {{($ppdbs->agamapd) == "Islam" ? 'selected' : ''}}>Islam</option>
+                                    <option value="Kristen" {{($ppdbs->agamapd) == "Kristen" ? 'selected' : ''}}>Kristen</option>
+                                    <option value="Katholik" {{($ppdbs->agamapd) == "Katholik" ? 'selected' : ''}}>Khatolik</option>
+                                    <option value="Hindu" {{($ppdbs->agamapd) == "Hindu" ? 'selected' : ''}}>Hindu</option>
+                                    <option value="Budha" {{($ppdbs->agamapd) == "Budha" ? 'selected' : ''}}>Budha</option>
+                                    <option value="Kong Hu Chu" {{($ppdbs->agamapd) == "Kong Hu Chu" ? 'selected' : ''}}>Kong Hu Chu</option>
+                                    <option value="Kepercayaan Kepada Tuhan YME" {{($ppdbs->agamapd) == "Kepercayaan Kepada Tuhan YME" ? 'selected' : ''}}>Kepercayaan Kepada Tuhan YME</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="disabilitaspd">Berkebutuhan Khusus</label>
                             <div class="col-sm-2">
-                                <select class="form-control" id="disabilitaspd" name="disabilitaspd" value="{{ old('disabilitaspd') }}">
+                                <select class="form-control" id="disabilitaspd" name="disabilitaspd" value="{{ $ppdbs->disabilitaspd }}">
                                     <option value="Tidak ada">Tidak ada</option>
                                     <option value="Netra (A)">Netra (A)</option>
                                     <option value="Rungu (B)">Rungu (B)</option>
@@ -119,13 +119,13 @@
                         <div class="form-group row">
                             <label for="alamatjlnpd" class="col-sm-2 col-form-label">Alamat Jalan</label>
                             <div class="col-sm-10">
-                                <input type="text" name="alamatjlnpd" id="alamatjlnpd" class="form-control" value="{{ old('alamatjlnpd') }}">
+                                <input type="text" name="alamatjlnpd" id="alamatjlnpd" class="form-control" value="{{ $ppdbs->alamatjlnpd }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="provinsi">Provinsi</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="provinsi" name="provinsi" value="{{ old('provinsi') }}">
+                                <select class="form-control" id="provinsi" name="provinsi" value="{{ $ppdbs->provinsi }}">
                                     <option value="Aceh">Aceh</option>
                                     <option value="Bali">Bali</option>
                                     <option value="Banten">Banten</option>
@@ -166,43 +166,43 @@
                         <div class="form-group row">
                             <label for="kabupatenkota" class="col-sm-2 col-form-label">Kabupaten/Kota</label>
                             <div class="col-sm-5">
-                                <input type="text" name="kabupatenkota" id="kabupatenkota" class="form-control" required value="{{ old('kabupatenkota') }}">
+                                <input type="text" name="kabupatenkota" id="kabupatenkota" class="form-control" required value="{{ $ppdbs->kabupatenkota }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="kecamatan" class="col-sm-2 col-form-label">Kecamatan</label>
                             <div class="col-sm-5">
-                                <input type="text" name="kecamatan" id="kecamatan" class="form-control" required value="{{ old('kecamatan') }}">
+                                <input type="text" name="kecamatan" id="kecamatan" class="form-control" required value="{{ $ppdbs->kecamatan }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="kelurahan" class="col-sm-2 col-form-label">Desa/Kelurahan</label>
                             <div class="col-sm-5">
-                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" required value="{{ old('kelurahan') }}">
+                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" required value="{{ $ppdbs->kelurahan') }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="rt" class="col-sm-2 col-form-label">RT</label>
                             <div class="col-sm-2">
-                                <input type="text" name="rt" id="rt" class="form-control" value="{{ old('rt') }}">
+                                <input type="text" name="rt" id="rt" class="form-control" value="{{ $ppdbs->rt }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="rw" class="col-sm-2 col-form-label">RW</label>
                             <div class="col-sm-2">
-                                <input type="text" name="rw" id="rw" class="form-control" value="{{ old('rw') }}">
+                                <input type="text" name="rw" id="rw" class="form-control" value="{{ $ppdbs->rw }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="kodepos" class="col-sm-2 col-form-label">Kode POS</label>
                             <div class="col-sm-2">
-                                <input type="text" name="kodepos" id="kodepos" class="form-control" value="{{ old('kodepos') }}">
+                                <input type="text" name="kodepos" id="kodepos" class="form-control" value="{{ $ppdbs->kodepos }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="anakkeberapa" class="col-sm-2 col-form-label">Anak ke-berapa (berdasarkan KK)</label>
                             <div class="col-sm-2">
-                                <input type="text" name="anakkeberapa" id="anakkeberapa" class="form-control" value="{{ old('anakkeberapa') }}">
+                                <input type="text" name="anakkeberapa" id="anakkeberapa" class="form-control" value="{{ $ppdbs->anakkeberapa }}">
                                 <small class="form-text text-muted">Sesuai dengan urutan Kartu Keluarga</small>
                             </div>
                         </div>
@@ -216,27 +216,27 @@
                         <div class="form-group row">
                             <label for="namaayah" class="col-sm-2 col-form-label">Nama Ayah Kandung</label>
                             <div class="col-sm-10">
-                                <input type="text" name="namaayah" id="namaayah" class="form-control" required value="{{ old('namaayah') }}">
+                                <input type="text" name="namaayah" id="namaayah" class="form-control" required value="{{ $ppdbs->namaayah }}">
                                 <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau Akta Kelahiran (Tanpa Gelar)</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikayah" class="col-sm-2 col-form-label">NIK Ayah Kandung</label>
                             <div class="col-sm-3">
-                                <input type="text" name="nikayah" id="nikayah" class="form-control" value="{{ old('nikayah') }}">
+                                <input type="text" name="nikayah" id="nikayah" class="form-control" value="{{ $ppdbs->nikayah }}">
                                 <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tahunlahirayah" class="col-sm-2 col-form-label">Tahun Lahir Ayah</label>
                             <div class="col-sm-2">
-                                <input type="text" name="tahunlahirayah" id="tahunlahirayah" class="form-control" value="{{ old('tahunlahirayah') }}">
+                                <input type="text" name="tahunlahirayah" id="tahunlahirayah" class="form-control" value="{{ $ppdbs->tahunlahirayah }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pendidikanayah">Pendidikan Terakhir Ayah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pendidikanayah" name="pendidikanayah" value="{{ old('pendidikanayah') }}">
+                                <select class="form-control" id="pendidikanayah" name="pendidikanayah" value="{{ $ppdbs->pendidikanayah }}">
                                     <option value="Tidak Sekolah">Tidak Sekolah</option>
                                     <option value="Putus SD">Putus SD</option>
                                     <option value="SD sederajat">SD sederajat</option>
@@ -254,7 +254,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pekerjaanayah">Pekerjaan Ayah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pekerjaanayah" name="pekerjaanayah" value="{{ old('pekerjaanayah') }}">
+                                <select class="form-control" id="pekerjaanayah" name="pekerjaanayah" value="{{ $ppdbs->pekerjaanayah) }}">
                                     <option value="Tidak Bekerja">Tidak Bekerja</option>
                                     <option value="Nelayan">Nelayan</option>
                                     <option value="Petani">Petani</option>
@@ -277,7 +277,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="penghasilanayah">Penghasilan Ayah Perbulan</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="penghasilanayah" name="penghasilanayah" value="{{ old('penghasilanibu') }}">
+                                <select class="form-control" id="penghasilanayah" name="penghasilanayah" value="{{ $ppdbs->penghasilanayah }}">
                                     <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
                                     <option value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
                                     <option value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
@@ -299,27 +299,27 @@
                         <div class="form-group row">
                             <label for="namaibu" class="col-sm-2 col-form-label">Nama Ibu Kandung</label>
                             <div class="col-sm-10">
-                                <input type="text" name="namaibu" id="namaibu" class="form-control" required value="{{ old('namaibu') }}">
+                                <input type="text" name="namaibu" id="namaibu" class="form-control" required value="{{ $ppdbs->namaibu }}">
                                 <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau Akta Kelahiran (Tanpa Gelar)</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikibu" class="col-sm-2 col-form-label">NIK Ibu Kandung</label>
                             <div class="col-sm-3">
-                                <input type="text" name="nikibu" id="nikibu" class="form-control" value="{{ old('nikibu') }}">
+                                <input type="text" name="nikibu" id="nikibu" class="form-control" value="{{ $ppdbs->nikibu }}">
                                 <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="tahunlahiribu" class="col-sm-2 col-form-label">Tahun Lahir Ibu</label>
                             <div class="col-sm-2">
-                                <input type="text" name="tahunlahiribu" id="tahunlahiribu" class="form-control" value="{{ old('tahunlahiribu') }}">
+                                <input type="text" name="tahunlahiribu" id="tahunlahiribu" class="form-control" value="{{ $ppdbs->tahunlahiribu }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pendidikanibu">Pendidikan Terakhir Ibu</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pendidikanibu" name="pendidikanibu" value="{{ old('pendidikanibu') }}">
+                                <select class="form-control" id="pendidikanibu" name="pendidikanibu" value="{{ $ppdbs->pendidikanibu }}">
                                     <option value="Tidak Sekolah">Tidak Sekolah</option>
                                     <option value="Putus SD">Putus SD</option>
                                     <option value="SD sederajat">SD sederajat</option>
@@ -337,7 +337,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pekerjaanibu">Pekerjaan Ibu</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pekerjaanibu" name="pekerjaanibu" value="{{ old('pekerjaanibu') }}">
+                                <select class="form-control" id="pekerjaanibu" name="pekerjaanibu" value="{{ $ppdbs->pekerjaanibu }}">
                                     <option value="Tidak Bekerja">Tidak Bekerja</option>
                                     <option value="Nelayan">Nelayan</option>
                                     <option value="Petani">Petani</option>
@@ -360,7 +360,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="penghasilanibu">Penghasilan Ibu Perbulan</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="penghasilanibu" name="penghasilanibu" value="{{ old('penghasilanibu') }}">
+                                <select class="form-control" id="penghasilanibu" name="penghasilanibu" value="{{ $ppdbs->penghasilanibu }}">
                                     <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
                                     <option value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
                                     <option value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
@@ -382,19 +382,19 @@
                         <div class="form-group row">
                             <label for="namawali" class="col-sm-2 col-form-label">Nama Wali</label>
                             <div class="col-sm-10">
-                                <input type="text" name="namawali" id="namawali" class="form-control" value="{{ old('namawali') }}">
+                                <input type="text" name="namawali" id="namawali" class="form-control" value="{{ $ppdbs->namawali }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikwali" class="col-sm-2 col-form-label">NIK Wali</label>
                             <div class="col-sm-3">
-                                <input type="text" name="nikwali" id="nikwali" class="form-control" value="{{ old('nikwali') }}">
+                                <input type="text" name="nikwali" id="nikwali" class="form-control" value="{{ $ppdbs->nikwali }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pekerjaanwali">Pekerjaan wali</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pekerjaanwali" name="pekerjaanwali" value="{{ old('pekerjaanwali') }}">
+                                <select class="form-control" id="pekerjaanwali" name="pekerjaanwali" value="{{ $ppdbs->pekerjaanwali }}">
                                     <option value="Tidak Bekerja">Tidak Bekerja</option>
                                     <option value="Nelayan">Nelayan</option>
                                     <option value="Petani">Petani</option>
@@ -417,7 +417,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="penghasilanwali">Penghasilan Wali</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="penghasilanwali" name="penghasilanwali" value="{{ old('penghasilanwali') }}">
+                                <select class="form-control" id="penghasilanwali" name="penghasilanwali" value="{{ $ppdbs->penghasilanwali }}">
                                     <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
                                     <option value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
                                     <option value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
@@ -439,25 +439,25 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="telpayah">No HP/WA Ayah</label>
                             <div class="col-sm-4">
-                                <input type="text" name="telpayah" id="telpayah" class="form-control" value="{{ old('telpayah') }}">
+                                <input type="text" name="telpayah" id="telpayah" class="form-control" value="{{ $ppdbs->telpayah }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="telpibu">No HP/WA Ibu</label>
                             <div class="col-sm-4">
-                                <input type="text" name="telpibu" id="telpibu" class="form-control" value="{{ old('telpibu') }}" required>
+                                <input type="text" name="telpibu" id="telpibu" class="form-control" value="{{ $ppdbs->telpibu }}" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="telpwali">No HP/WA Wali</label>
                             <div class="col-sm-4">
-                                <input type="text" name="telpwali" id="telpwali" class="form-control" value="{{ old('telpwali') }}">
+                                <input type="text" name="telpwali" id="telpwali" class="form-control" value="{{ $ppdbs->telpwali }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="tempattinggal">Tempat tinggal ketika Sekolah di SMA Wahidiyah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="tempattinggal" name="tempattinggal" value="{{ old('tempattinggal') }}">
+                                <select class="form-control" id="tempattinggal" name="tempattinggal" value="{{ $ppdbs->tempattinggal }}">
                                     <option value="0">Tinggal Bersama Orang Tua</option>
                                     <option value="1">Tinggal di Asrama PonPes Kedunglo</option>
                                 </select>
@@ -466,16 +466,16 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="kategorialumni">Apakah Alumni SMP Wahidiyah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="kategorialumni" name="kategorialumni" value="{{ old('kategorialumni') }}">
+                                <select class="form-control" id="kategorialumni" name="kategorialumni" value="{{ $ppdbs->kategorialumni }}">
                                     <option value="0">Bukan Alumni SMP Wahidiyah</option>
                                     <option value="1">Alumni SMP Wahidiyah</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="katorgtuapersonil">Apakah Orang Tua Personil Yayasan Perjuangan Wahidiyah Pusat</label>
+                            <label class="col-sm-2 col-form-label" for="katorgtuapersonil">Apakah Orang Tua Personil Yayasan Perjuangan Wahidiyah Pusat di Kediri</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="katorgtuapersonil" name="katorgtuapersonil" value="{{ old('katorgtuapersonil') }}">
+                                <select class="form-control" id="katorgtuapersonil" name="katorgtuapersonil" value="{{ $ppdbs->katorgtuapersonil }}">
                                     <option value="0">Bukan Personil</option>
                                     <option value="1">Pernosil ( 5 s.d. 10 Thn masa kerja)</option>
                                     <option value="2">Pernosil ( Lebih dari 10 Thn masa kerja)</option>
@@ -499,7 +499,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col text-center">
-                                        <button class="btn btn-primary">Lanjutkan Pendaftaran</button>
+                                        <button class="btn btn-primary">Simpan Perubahan</button>
                                     </div>
                                 </div>
                             </div>

@@ -22,9 +22,9 @@ class DataPDController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function ($ppdb) {
             return '<div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-md btn-primary">Lihat</button>
-                      <button type="button" class="btn btn-md btn-danger">Hapus</button>
-                      <button type="button" class="btn btn-md btn-success">Edit</button>
+                      <a href="#" type="button" class="btn btn-md btn-primary">Lihat</a>
+                      <a href="#" type="button" class="btn btn-md btn-danger">Hapus</a>
+                      <a href="'.route('edit', $ppdbs->nisnpd).'"type="button" class="btn btn-md btn-success">Edit</a>
                     </div>';
         })
         ->toJson();

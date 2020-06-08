@@ -23,4 +23,9 @@ class PanelController extends Controller
         return Excel::download(new PpdbExport, 'ppbd.xlsx');
     }
 
+    public function ($nisnpd)
+    {
+        # code...
+    }
+
 }
