@@ -24,7 +24,7 @@ class DataPDController extends Controller
             return '<div class="btn-group" role="group" aria-label="Basic example">
                       <a href="#" type="button" class="btn btn-md btn-primary">Lihat</a>
                       <a href="#" type="button" class="btn btn-md btn-danger">Hapus</a>
-                      <a href="'.route('edit', $ppdbs->nisnpd).'"type="button" class="btn btn-md btn-success">Edit</a>
+                      <a href="'.route('edit', $ppdb->nisnpd).'"type="button" class="btn btn-md btn-success">Edit</a>
                     </div>';
         })
         ->toJson();
