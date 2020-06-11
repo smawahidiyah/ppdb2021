@@ -23,9 +23,9 @@ class PanelController extends Controller
         return Excel::download(new PpdbExport, 'ppbd.xlsx');
     }
 
-    public function edit($nisnpd)
+    public function edit($id)
     {
-       $ppdbs = DB::table('ppdbs')->where('nisnpd', $nisnpd )->get();
+       $ppdbs = Ppdb::find($id);
        return view('panel.app.edit', ['ppdbs'=>$ppdbs]);
     }
 

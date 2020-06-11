@@ -23,7 +23,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
+                @endif
                 <div class="card mb-3">
                     <div class="card-header">
                         <div class="card-tittle h4">Data Pribadi Peserta Didik</div>

@@ -1,18 +1,13 @@
-@extends('panel.app.base')
+@extends('panel.base')
 
 @section('content')
 
-<div class="container">
-    <div class="py-3">
-        <h2 class="text-center">Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2020/2021</h2>
-    </div>
-</div>
 <section class="container container-fluid py-5">
-    <form method="post" action="{{route('updatepd', $ppdbs->ninspd)}}">
+    <form method="post" action="#">
     @csrf
         <div class="card">
             <div class="card-header">
-                <h3 class="card-tittle">Form Pendaftaran</h3>
+                <h3 class="card-tittle">Form Edit</h3>
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -23,8 +18,8 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
-                <div class="card mb-3">
+                @endif
+                <div class="card card-primary mb-3">
                     <div class="card-header">
                         <div class="card-tittle h4">Data Pribadi Peserta Didik</div>
                     </div>
@@ -34,7 +29,7 @@
                             <div class="col-sm-10">
                                 <input type="text" name="namapd" id="namapd" class="form-control" required value="{{ $ppdbs->namapd }}" style="text-transform:uppercase;">
                                 <small class="form-text text-muted">Sesuai dengan dokumen resmi (KK, Akta kelahiran atau ijazah sebelumnya.)</small>
-                            </div>
+                                </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="kelaminpd">Jenis Kelamin</label>
@@ -48,7 +43,7 @@
                         <div class="form-group row">
                             <label for="nisnpd" class="col-sm-2 col-form-label">NISN</label>
                             <div class="col-sm-3">
-                                <input type="text" name="nisnpd" id="nisnpd" class="form-control" required value="{{ $ppdbs->ninspd }}">
+                                <input type="text" name="nisnpd" id="nisnpd" class="form-control" required value="{{ $ppdbs->nisnpd }}">
                                 <small class="form-text text-muted">Sesuai dengan Ijazah sebelumnya atau NISN dari SMP/MTs sekolah asal.</small>
                             </div>
                         </div>
@@ -83,36 +78,36 @@
                             <label class="col-sm-2 col-form-label" for="agamapd">Agama</label>
                             <div class="col-sm-2">
                                 <select class="form-control" id="agamapd" name="agamapd">
-                                    <option value="Islam" {{($ppdbs->agamapd) == "Islam" ? 'selected' : ''}}>Islam</option>
-                                    <option value="Kristen" {{($ppdbs->agamapd) == "Kristen" ? 'selected' : ''}}>Kristen</option>
-                                    <option value="Katholik" {{($ppdbs->agamapd) == "Katholik" ? 'selected' : ''}}>Khatolik</option>
-                                    <option value="Hindu" {{($ppdbs->agamapd) == "Hindu" ? 'selected' : ''}}>Hindu</option>
-                                    <option value="Budha" {{($ppdbs->agamapd) == "Budha" ? 'selected' : ''}}>Budha</option>
-                                    <option value="Kong Hu Chu" {{($ppdbs->agamapd) == "Kong Hu Chu" ? 'selected' : ''}}>Kong Hu Chu</option>
-                                    <option value="Kepercayaan Kepada Tuhan YME" {{($ppdbs->agamapd) == "Kepercayaan Kepada Tuhan YME" ? 'selected' : ''}}>Kepercayaan Kepada Tuhan YME</option>
+                                    <option value="Islam" {{ ($ppdbs->agamapd) == "Islam" ? 'selected' : '' }}>Islam</option>
+                                    <option value="Kristen" {{ ($ppdbs->agamapd) == "Kristen" ? 'selected' : '' }}>Kristen</option>
+                                    <option value="Katholik" {{ ($ppdbs->agamapd) == "Katholik" ? 'selected' : '' }}>Khatolik</option>
+                                    <option value="Hindu" {{ ($ppdbs->agamapd) == "Hindu" ? 'selected' : '' }}>Hindu</option>
+                                    <option value="Budha" {{ ($ppdbs->agamapd) == "Budha" ? 'selected' : '' }}>Budha</option>
+                                    <option value="Kong Hu Chu" {{ ($ppdbs->agamapd) == "Kong Hu Chu" ? 'selected' : '' }}>Kong Hu Chu</option>
+                                    <option value="Kepercayaan Kepada Tuhan YME" {{ ($ppdbs->agamapd) == "Kepercayaan Kepada Tuhan YME" ? 'selected' : '' }}>Kepercayaan Kepada Tuhan YME</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="disabilitaspd">Berkebutuhan Khusus</label>
                             <div class="col-sm-2">
-                                <select class="form-control" id="disabilitaspd" name="disabilitaspd" value="{{ $ppdbs->disabilitaspd }}">
-                                    <option value="Tidak ada">Tidak ada</option>
-                                    <option value="Netra (A)">Netra (A)</option>
-                                    <option value="Rungu (B)">Rungu (B)</option>
-                                    <option value="Grahitna Ringan (C)">Grahitna Ringan (C)</option>
-                                    <option value="Grahitna Sedang (C1)">Grahitna Sedang (C1)</option>
-                                    <option value="Daksa Ringan (D)">Daksa Ringan (D)</option>
-                                    <option value="Daksa Sedang (D1)">Daksa Sedang (D1)</option>
-                                    <option value="Laras (E)">Laras (E)</option>
-                                    <option value="Wicara (F)">Wicara (F)</option>
-                                    <option value="Tuna Ganda (G)">Tuna Ganda (G)</option>
-                                    <option value="Hiperaktif (H)">Hiperaktif (H)</option>
-                                    <option value="Cerdas Istimewa (I)">Cerdas Istimewa (I)</option>
-                                    <option value="Kesulitan Belajar (J)">Kesulitan Belajar (J)</option>
-                                    <option value="Indigo (K)">Indigo (K)</option>
-                                    <option value="Down Sindrom (L)">Down Sindrom (L)</option>
-                                    <option value="Autis (M)">Autis (M)</option>
+                                <select class="form-control" id="disabilitaspd" name="disabilitaspd" value="{{ old('disabilitaspd') }}">
+                                    <option value="Tidak ada" {{ ($ppdbs->disabilitaspd ) == "Tidak ada" ? 'selected' : '' }}>Tidak ada</option>
+                                    <option value="Netra (A)" {{ ($ppdbs->disabilitaspd ) == "Netra (A)" ? 'selected' : '' }}>Netra (A)</option>
+                                    <option value="Rungu (B)" {{ ($ppdbs->disabilitaspd ) == "Rungu (B)" ? 'selected' : '' }}>Rungu (B)</option>
+                                    <option value="Grahitna Ringan (C)" {{ ($ppdbs->disabilitaspd ) == "Grahitna Ringan (C)" ? 'selected' : '' }}>Grahitna Ringan (C)</option>
+                                    <option value="Grahitna Sedang (C1)" {{ ($ppdbs->disabilitaspd ) == "Grahitna Sedang (C1)" ? 'selected' : '' }}>Grahitna Sedang (C1)</option>
+                                    <option value="Daksa Ringan (D)" {{ ($ppdbs->disabilitaspd ) == "Daksa Ringan (D)" ? 'selected' : '' }}>Daksa Ringan (D)</option>
+                                    <option value="Daksa Sedang (D1)" {{ ($ppdbs->disabilitaspd ) == "Daksa Sedang (D1)" ? 'selected' : '' }}>Daksa Sedang (D1)</option>
+                                    <option value="Laras (E)" {{ ($ppdbs->disabilitaspd ) == "Laras (E)" ? 'selected' : '' }}>Laras (E)</option>
+                                    <option value="Wicara (F)" {{ ($ppdbs->disabilitaspd ) == "Wicara (F)" ? 'selected' : '' }}>Wicara (F)</option>
+                                    <option value="Tuna Ganda (G)" {{ ($ppdbs->disabilitaspd ) == "Tuna Ganda (G)" ? 'selected' : '' }}>Tuna Ganda (G)</option>
+                                    <option value="Hiperaktif (H)" {{ ($ppdbs->disabilitaspd ) == "Hiperaktif (H)" ? 'selected' : '' }}>Hiperaktif (H)</option>
+                                    <option value="Cerdas Istimewa (I)" {{ ($ppdbs->disabilitaspd ) == "Cerdas Istimewa (I)" ? 'selected' : '' }}>Cerdas Istimewa (I)</option>
+                                    <option value="Kesulitan Belajar (J)" {{ ($ppdbs->disabilitaspd ) == "Kesulitan Belajar (J)" ? 'selected' : '' }}>Kesulitan Belajar (J)</option>
+                                    <option value="Indigo (K)" {{ ($ppdbs->disabilitaspd ) == "Indigo (K)" ? 'selected' : '' }}>Indigo (K)</option>
+                                    <option value="Down Sindrom (L)" {{ ($ppdbs->disabilitaspd ) == "Down Sindrom (L)" ? 'selected' : '' }}>Down Sindrom (L)</option>
+                                    <option value="Autis (M)" {{ ($ppdbs->disabilitaspd ) == "Autis (M)" ? 'selected' : '' }}>Autis (M)</option>
                                 </select>
                             </div>
                         </div>
@@ -125,41 +120,41 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="provinsi">Provinsi</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="provinsi" name="provinsi" value="{{ $ppdbs->provinsi }}">
-                                    <option value="Aceh">Aceh</option>
-                                    <option value="Bali">Bali</option>
-                                    <option value="Banten">Banten</option>
-                                    <option value="Bengkulu">Bengkulu</option>
-                                    <option value="D.I. Yogyakarta">D.I. Yogyakarta</option>
-                                    <option value="D.K.I. Jakarta">D.K.I. Jakarta</option>
-                                    <option value="Gorontalo">Gorontalo</option>
-                                    <option value="Jambi">Jambi</option>
-                                    <option value="Jawa Barat">Jawa Barat</option>
-                                    <option value="Jawa Tengah">Jawa Tengah</option>
-                                    <option value="Jawa Timur" selected>Jawa Timur</option>
-                                    <option value="Kalimantan Barat">Kalimantan Barat</option>
-                                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                                    <option value="Kalimantan Timur">Kalimantan Timur</option>
-                                    <option value="Kalimantan Utara">Kalimantan Utara</option>
-                                    <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
-                                    <option value="Kepulauan Riau">Kepulauan Riau</option>
-                                    <option value="Lampung">Lampung</option>
-                                    <option value="Maluku">Maluku</option>
-                                    <option value="Maluku Utara">Maluku Utara</option>
-                                    <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
-                                    <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
-                                    <option value="Papua">Papua</option>
-                                    <option value="Papua Barat">Papua Barat</option>
-                                    <option value="Riau">Riau</option>
-                                    <option value="Sulawesi Barat">Sulawesi Barat</option>
-                                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                                    <option value="Sulawesi Utara">Sulawesi Utara</option>
-                                    <option value="Sumatera Barat">Sumatera Barat</option>
-                                    <option value="Sumatera Selatan">Sumatera Selatan</option>
-                                    <option value="Sumatera Utara">Sumatera Utara</option>
+                                <select class="form-control" id="provinsi" name="provinsi">
+                                    <option value="Aceh" {{ ($ppdbs->provinsi) == "Aceh" ? 'selected' : '' }}>Aceh</option>
+                                    <option value="Bali" {{ ($ppdbs->provinsi) == "Bali" ? 'selected' : '' }}>Bali</option>
+                                    <option value="Banten" {{ ($ppdbs->provinsi) == "Banten" ? 'selected' : '' }}>Banten</option>
+                                    <option value="Bengkulu" {{ ($ppdbs->provinsi) == "Bengkulu" ? 'selected' : '' }}>Bengkulu</option>
+                                    <option value="D.I. Yogyakarta" {{ ($ppdbs->provinsi) == "D.I. Yogyakarta" ? 'selected' : '' }}>D.I. Yogyakarta</option>
+                                    <option value="D.K.I. Jakarta" {{ ($ppdbs->provinsi) == "D.K.I. Jakarta" ? 'selected' : '' }}>D.K.I. Jakarta</option>
+                                    <option value="Gorontalo" {{ ($ppdbs->provinsi) == "Gorontalo" ? 'selected' : '' }}>Gorontalo</option>
+                                    <option value="Jambi" {{ ($ppdbs->provinsi) == "Jambi" ? 'selected' : '' }}>Jambi</option>
+                                    <option value="Jawa Barat" {{ ($ppdbs->provinsi) == "Jawa Barat" ? 'selected' : '' }}>Jawa Barat</option>
+                                    <option value="Jawa Tengah" {{ ($ppdbs->provinsi) == "Jawa Tengah" ? 'selected' : '' }}>Jawa Tengah</option>
+                                    <option value="Jawa Timur" {{ ($ppdbs->provinsi) == "Jawa Timur" ? 'selected' : '' }}>Jawa Timur</option>
+                                    <option value="Kalimantan Barat" {{ ($ppdbs->provinsi) == "Kalimantan Barat" ? 'selected' : '' }}>Kalimantan Barat</option>
+                                    <option value="Kalimantan Selatan" {{ ($ppdbs->provinsi) == "Kalimantan Selatan" ? 'selected' : '' }}>Kalimantan Selatan</option>
+                                    <option value="Kalimantan Tengah" {{ ($ppdbs->provinsi) == "Kalimantan Tengah" ? 'selected' : '' }}>Kalimantan Tengah</option>
+                                    <option value="Kalimantan Timur" {{ ($ppdbs->provinsi) == "Kalimantan Timur" ? 'selected' : '' }}>Kalimantan Timur</option>
+                                    <option value="Kalimantan Utara" {{ ($ppdbs->provinsi) == "Kalimantan Utara" ? 'selected' : '' }}>Kalimantan Utara</option>
+                                    <option value="Kepulauan Bangka Belitung" {{ ($ppdbs->provinsi) == "Kepulauan Bangka Belitung" ? 'selected' : '' }}>Kepulauan Bangka Belitung</option>
+                                    <option value="Kepulauan Riau" {{ ($ppdbs->provinsi) == "Kepulauan Riau" ? 'selected' : '' }}>Kepulauan Riau</option>
+                                    <option value="Lampung" {{ ($ppdbs->provinsi) == "Lampung" ? 'selected' : '' }}>Lampung</option>
+                                    <option value="Maluku " {{ ($ppdbs->provinsi) == "Maluku " ? 'selected' : '' }}>Maluku</option>
+                                    <option value="Maluku Utara" {{ ($ppdbs->provinsi) == "Maluku Utara" ? 'selected' : '' }}>Maluku Utara</option>
+                                    <option value="Nusa Tenggara Barat" {{ ($ppdbs->provinsi) == "Nusa Tenggara Barat" ? 'selected' : '' }}>Nusa Tenggara Barat</option>
+                                    <option value="Nusa Tenggara Timur" {{ ($ppdbs->provinsi) == "Nusa Tenggara Timur" ? 'selected' : '' }}>Nusa Tenggara Timur</option>
+                                    <option value="Papua" {{ ($ppdbs->provinsi) == "Papua" ? 'selected' : '' }}>Papua</option>
+                                    <option value="Papua Barat" {{ ($ppdbs->provinsi) == "Papua Barat" ? 'selected' : '' }}>Papua Barat</option>
+                                    <option value="Riau" {{ ($ppdbs->provinsi) == "Riau" ? 'selected' : '' }}>Riau</option>
+                                    <option value="Sulawesi Barat" {{ ($ppdbs->provinsi) == "Sulawesi Barat" ? 'selected' : '' }}>Sulawesi Bara</option>
+                                    <option value="Sulawesi Selatan" {{ ($ppdbs->provinsi) == "Sulawesi Selatan" ? 'selected' : '' }}>Sulawesi Selatan</option>
+                                    <option value="Sulawesi Tengah" {{ ($ppdbs->provinsi) == "Sulawesi Tengah" ? 'selected' : '' }}>Sulawesi Tengah</option>
+                                    <option value="Sulawesi Tenggara" {{ ($ppdbs->provinsi) == "Sulawesi Tenggara" ? 'selected' : '' }}>Sulawesi Tenggara</option>
+                                    <option value="Sulawesi Utara" {{ ($ppdbs->provinsi) == "Sulawesi Utara" ? 'selected' : '' }}>Sulawesi Utara</option>
+                                    <option value="Sumatera Barat" {{ ($ppdbs->provinsi) == "Sumatera Barat" ? 'selected' : '' }}>Sumatera Barat</option>
+                                    <option value="Sumatera Selatan" {{ ($ppdbs->provinsi) == "Sumatera Selatan" ? 'selected' : '' }}>Sumatera Selatan</option>
+                                    <option value="Sumatera Utara" {{ ($ppdbs->provinsi) == "Sumatera Utara" ? 'selected' : '' }}>Sumatera Utara</option>
                                 </select>
                             </div>
                         </div>
@@ -178,7 +173,7 @@
                         <div class="form-group row">
                             <label for="kelurahan" class="col-sm-2 col-form-label">Desa/Kelurahan</label>
                             <div class="col-sm-5">
-                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" required value="{{ $ppdbs->kelurahan') }}">
+                                <input type="text" name="kelurahan" id="kelurahan" class="form-control" required value="{{ $ppdbs->kelurahan }}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -208,7 +203,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3">
+                <div class="card card-primary mb-3">
                     <div class="card-header">
                         <div class="card-tittle h4">Data Ayah Kandung</div>
                     </div>
@@ -236,62 +231,62 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pendidikanayah">Pendidikan Terakhir Ayah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pendidikanayah" name="pendidikanayah" value="{{ $ppdbs->pendidikanayah }}">
-                                    <option value="Tidak Sekolah">Tidak Sekolah</option>
-                                    <option value="Putus SD">Putus SD</option>
-                                    <option value="SD sederajat">SD sederajat</option>
-                                    <option value="SMP Sederajat">SMP Sederajat</option>
-                                    <option value="SMA Sederajat">SMA Sederajat</option>
-                                    <option value="D1">D1</option>
-                                    <option value="D2">D2</option>
-                                    <option value="D3">D3</option>
-                                    <option value="D4/S1">D4/S1</option>
-                                    <option value="S2">S2</option>
-                                    <option value="S3">S3</option>
+                                <select class="form-control" id="pendidikanayah" name="pendidikanayah">
+                                    <option {{ ($ppdbs->pendidikanayah) == "Tidak Sekolah" ? 'selected' : '' }} value="Tidak Sekolah">Tidak Sekolah</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "Putus SD" ? 'selected' : '' }} value="Putus SD">Putus SD</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "SD sederajat" ? 'selected' : '' }} value="SD sederajat">SD sederajat</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "SMP Sederajat" ? 'selected' : '' }} value="SMP Sederajat">SMP Sederajat</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "SMA Sederajat" ? 'selected' : '' }} value="SMA Sederajat">SMA Sederajat</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "D1" ? 'selected' : '' }} value="D1">D1</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "D2" ? 'selected' : '' }} value="D2">D2</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "D3" ? 'selected' : '' }} value="D3">D3</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "D4/S1" ? 'selected' : '' }} value="D4/S1">D4/S1</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "S2" ? 'selected' : '' }} value="S2">S2</option>
+                                    <option {{ ($ppdbs->pendidikanayah) == "S3" ? 'selected' : '' }} value="S3">S3</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pekerjaanayah">Pekerjaan Ayah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pekerjaanayah" name="pekerjaanayah" value="{{ $ppdbs->pekerjaanayah) }}">
-                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
-                                    <option value="Nelayan">Nelayan</option>
-                                    <option value="Petani">Petani</option>
-                                    <option value="Peternak">Peternak</option>
-                                    <option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
-                                    <option value="Karyawan Swasta">Karyawan Swasta</option>
-                                    <option value="Pedagang Kecil">Pedagang Kecil</option>
-                                    <option value="Pedagang Besar">Pedagang Besar</option>
-                                    <option value="Wiraswasta">Wiraswasta</option>
-                                    <option value="Wirausaha">Wirausaha</option>
-                                    <option value="Buruh">Buruh</option>
-                                    <option value="Pensiunan">Pensiunan</option>
-                                    <option value="Tenaga Kerja Indonesia">Tenaga Kerja Indonesia</option>
-                                    <option value="Tidak dapat Diterapkan">Tidak dapat Diterapkan</option>
-                                    <option value="Sudah Meninggal">Sudah Meninggal</option>
-                                    <option value="Lainnya">Lainnya</option>
+                                <select class="form-control" id="pekerjaanayah" name="pekerjaanayah" >
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Tidak Bekerja" ? 'selected' : '' }} value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Nelayan" ? 'selected' : '' }} value="Nelayan">Nelayan</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Petani" ? 'selected' : '' }} value="Petani">Petani</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Peternak" ? 'selected' : '' }} value="Peternak">Peternak</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "PNS/TNI/POLRI" ? 'selected' : '' }} value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Karyawan Swasta" ? 'selected' : '' }} value="Karyawan Swasta">Karyawan Swasta</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Pedagang Kecil" ? 'selected' : '' }} value="Pedagang Kecil">Pedagang Kecil</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Pedagang Besar" ? 'selected' : '' }} value="Pedagang Besar">Pedagang Besar</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Wiraswasta" ? 'selected' : '' }} value="Wiraswasta">Wiraswasta</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Wirausaha" ? 'selected' : '' }} value="Wirausaha">Wirausaha</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Buruh" ? 'selected' : '' }} value="Buruh">Buruh</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Pensiunan" ? 'selected' : '' }} value="Pensiunan">Pensiunan</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Tenaga Kerja Indonesia" ? 'selected' : '' }} value="Tenaga Kerja Indonesia">Tenaga Kerja Indonesia</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Tidak dapat Diterapkan" ? 'selected' : '' }} value="Tidak dapat Diterapkan">Tidak dapat Diterapkan</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Sudah Meninggal" ? 'selected' : '' }} value="Sudah Meninggal">Sudah Meninggal</option>
+                                    <option {{ ($ppdbs->pekerjaanayah) == "Lainnya" ? 'selected' : '' }} value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="penghasilanayah">Penghasilan Ayah Perbulan</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="penghasilanayah" name="penghasilanayah" value="{{ $ppdbs->penghasilanayah }}">
-                                    <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
-                                    <option value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
-                                    <option value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
-                                    <option value="Rp.500.000 - Rp.999.999">Rp.500.000 - Rp.999.999</option>
-                                    <option value="Rp.1.000.000 - Rp.2.000.000">Rp.1.000.000 - Rp.2.000.000</option>
-                                    <option value="Rp.2.000.000 - Rp.5.000.000">Rp.2.000.000 - Rp.5.000.000</option>
-                                    <option value="Rp.5.000.000 - Rp.20.000.000">Rp.5.000.000 - Rp.20.000.000</option>
-                                    <option value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
+                                <select class="form-control" id="penghasilanayah" name="penghasilanayah">
+                                    <option {{ ($ppdbs->penghasilananayah) == "Tidak Berpenghasilan" ? 'selected' : '' }} value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Kurang dari Rp.500.000" ? 'selected' : '' }} value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Kurang dari Rp.1.000.000" ? 'selected' : '' }} value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Rp.500.000 - Rp.999.999" ? 'selected' : '' }} value="Rp.500.000 - Rp.999.999">Rp.500.000 - Rp.999.999</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Rp.1.000.000 - Rp.2.000.000" ? 'selected' : '' }} value="Rp.1.000.000 - Rp.2.000.000">Rp.1.000.000 - Rp.2.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Rp.2.000.000 - Rp.5.000.000" ? 'selected' : '' }} value="Rp.2.000.000 - Rp.5.000.000">Rp.2.000.000 - Rp.5.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Rp.5.000.000 - Rp.20.000.000" ? 'selected' : '' }} value="Rp.5.000.000 - Rp.20.000.000">Rp.5.000.000 - Rp.20.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananayah) == "Lebih dari Rp.20.000.000" ? 'selected' : '' }} value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3">
+                <div class="card card-primary mb-3">
                     <div class="card-header">
                         <div class="card-tittle h4">Data Ibu Kandung</div>
                     </div>
@@ -319,62 +314,62 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pendidikanibu">Pendidikan Terakhir Ibu</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pendidikanibu" name="pendidikanibu" value="{{ $ppdbs->pendidikanibu }}">
-                                    <option value="Tidak Sekolah">Tidak Sekolah</option>
-                                    <option value="Putus SD">Putus SD</option>
-                                    <option value="SD sederajat">SD sederajat</option>
-                                    <option value="SMP Sederajat">SMP Sederajat</option>
-                                    <option value="SMA Sederajat">SMA Sederajat</option>
-                                    <option value="D1">D1</option>
-                                    <option value="D2">D2</option>
-                                    <option value="D3">D3</option>
-                                    <option value="D4/S1">D4/S1</option>
-                                    <option value="S2">S2</option>
-                                    <option value="S3">S3</option>
+                                <select class="form-control" id="pendidikanibu" name="pendidikanibu">
+                                    <option {{ ($ppdbs->pendidikanibu) == "Tidak Sekolah" ? 'selected' : '' }} value="Tidak Sekolah">Tidak Sekolah</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "Putus SD" ? 'selected' : '' }} value="Putus SD">Putus SD</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "SD sederajat" ? 'selected' : '' }} value="SD sederajat">SD sederajat</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "SMP Sederajat" ? 'selected' : '' }} value="SMP Sederajat">SMP Sederajat</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "SMA Sederajat" ? 'selected' : '' }} value="SMA Sederajat">SMA Sederajat</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "D1" ? 'selected' : '' }} value="D1">D1</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "D2" ? 'selected' : '' }} value="D2">D2</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "D3" ? 'selected' : '' }} value="D3">D3</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "D4/S1" ? 'selected' : '' }} value="D4/S1">D4/S1</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "S2" ? 'selected' : '' }} value="S2">S2</option>
+                                    <option {{ ($ppdbs->pendidikanibu) == "S3" ? 'selected' : '' }} value="S3">S3</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="pekerjaanibu">Pekerjaan Ibu</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pekerjaanibu" name="pekerjaanibu" value="{{ $ppdbs->pekerjaanibu }}">
-                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
-                                    <option value="Nelayan">Nelayan</option>
-                                    <option value="Petani">Petani</option>
-                                    <option value="Peternak">Peternak</option>
-                                    <option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
-                                    <option value="Karyawan Swasta">Karyawan Swasta</option>
-                                    <option value="Pedagang Kecil">Pedagang Kecil</option>
-                                    <option value="Pedagang Besar">Pedagang Besar</option>
-                                    <option value="Wiraswasta">Wiraswasta</option>
-                                    <option value="Wirausaha">Wirausaha</option>
-                                    <option value="Buruh">Buruh</option>
-                                    <option value="Pensiunan">Pensiunan</option>
-                                    <option value="Tenaga Kerja Indonesia">Tenaga Kerja Indonesia</option>
-                                    <option value="Tidak dapat Diterapkan">Tidak dapat Diterapkan</option>
-                                    <option value="Sudah Meninggal">Sudah Meninggal</option>
-                                    <option value="Lainnya">Lainnya</option>
+                                <select class="form-control" id="pekerjaanibu" name="pekerjaanibu" >
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Tidak Bekerja" ? 'selected' : '' }} value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Nelayan" ? 'selected' : '' }} value="Nelayan">Nelayan</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Petani" ? 'selected' : '' }} value="Petani">Petani</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Peternak" ? 'selected' : '' }} value="Peternak">Peternak</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "PNS/TNI/POLRI" ? 'selected' : '' }} value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Karyawan Swasta" ? 'selected' : '' }} value="Karyawan Swasta">Karyawan Swasta</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Pedagang Kecil" ? 'selected' : '' }} value="Pedagang Kecil">Pedagang Kecil</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Pedagang Besar" ? 'selected' : '' }} value="Pedagang Besar">Pedagang Besar</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Wiraswasta" ? 'selected' : '' }} value="Wiraswasta">Wiraswasta</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Wirausaha" ? 'selected' : '' }} value="Wirausaha">Wirausaha</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Buruh" ? 'selected' : '' }} value="Buruh">Buruh</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Pensiunan" ? 'selected' : '' }} value="Pensiunan">Pensiunan</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Tenaga Kerja Indonesia" ? 'selected' : '' }} value="Tenaga Kerja Indonesia">Tenaga Kerja Indonesia</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Tidak dapat Diterapkan" ? 'selected' : '' }} value="Tidak dapat Diterapkan">Tidak dapat Diterapkan</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Sudah Meninggal" ? 'selected' : '' }} value="Sudah Meninggal">Sudah Meninggal</option>
+                                    <option {{ ($ppdbs->pekerjaanibu) == "Lainnya" ? 'selected' : '' }} value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="penghasilanibu">Penghasilan Ibu Perbulan</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="penghasilanibu" name="penghasilanibu" value="{{ $ppdbs->penghasilanibu }}">
-                                    <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
-                                    <option value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
-                                    <option value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
-                                    <option value="Rp.500.000 - Rp.999.999">Rp.500.000 - Rp.999.999</option>
-                                    <option value="Rp.1.000.000 - Rp.2.000.000">Rp.1.000.000 - Rp.2.000.000</option>
-                                    <option value="Rp.2.000.000 - Rp.5.000.000">Rp.2.000.000 - Rp.5.000.000</option>
-                                    <option value="Rp.5.000.000 - Rp.20.000.000">Rp.5.000.000 - Rp.20.000.000</option>
-                                    <option value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
+                                <select class="form-control" id="penghasilanibu" name="penghasilanibu">
+                                    <option {{ ($ppdbs->penghasilananibu) == "Tidak Berpenghasilan" ? 'selected' : '' }} value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Kurang dari Rp.500.000" ? 'selected' : '' }} value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Kurang dari Rp.1.000.000" ? 'selected' : '' }} value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Rp.500.000 - Rp.999.999" ? 'selected' : '' }} value="Rp.500.000 - Rp.999.999">Rp.500.000 - Rp.999.999</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Rp.1.000.000 - Rp.2.000.000" ? 'selected' : '' }} value="Rp.1.000.000 - Rp.2.000.000">Rp.1.000.000 - Rp.2.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Rp.2.000.000 - Rp.5.000.000" ? 'selected' : '' }} value="Rp.2.000.000 - Rp.5.000.000">Rp.2.000.000 - Rp.5.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Rp.5.000.000 - Rp.20.000.000" ? 'selected' : '' }} value="Rp.5.000.000 - Rp.20.000.000">Rp.5.000.000 - Rp.20.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananibu) == "Lebih dari Rp.20.000.000" ? 'selected' : '' }} value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3">
+                <div class="card card-primary mb-3">
                     <div class="card-header">
                         <div class="card-tittle h4">Data Wali</div>
                     </div>
@@ -382,56 +377,58 @@
                         <div class="form-group row">
                             <label for="namawali" class="col-sm-2 col-form-label">Nama Wali</label>
                             <div class="col-sm-10">
-                                <input type="text" name="namawali" id="namawali" class="form-control" value="{{ $ppdbs->namawali }}">
+                                <input type="text" name="namawali" id="namawali" class="form-control" required value="{{ $ppdbs->namawali }}">
+                                <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau Akta Kelahiran (Tanpa Gelar)</small>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="nikwali" class="col-sm-2 col-form-label">NIK Wali</label>
                             <div class="col-sm-3">
                                 <input type="text" name="nikwali" id="nikwali" class="form-control" value="{{ $ppdbs->nikwali }}">
+                                <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau KTP</small>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="pekerjaanwali">Pekerjaan wali</label>
+                            <label class="col-sm-2 col-form-label" for="pekerjaanwali">Pekerjaan Wali</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="pekerjaanwali" name="pekerjaanwali" value="{{ $ppdbs->pekerjaanwali }}">
-                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
-                                    <option value="Nelayan">Nelayan</option>
-                                    <option value="Petani">Petani</option>
-                                    <option value="Peternak">Peternak</option>
-                                    <option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
-                                    <option value="Karyawan Swasta">Karyawan Swasta</option>
-                                    <option value="Pedagang Kecil">Pedagang Kecil</option>
-                                    <option value="Pedagang Besar">Pedagang Besar</option>
-                                    <option value="Wiraswasta">Wiraswasta</option>
-                                    <option value="Wirausaha">Wirausaha</option>
-                                    <option value="Buruh">Buruh</option>
-                                    <option value="Pensiunan">Pensiunan</option>
-                                    <option value="Tenaga Kerja Indonesia">Tenaga Kerja Indonesia</option>
-                                    <option value="Tidak dapat Diterapkan">Tidak dapat Diterapkan</option>
-                                    <option value="Sudah Meninggal">Sudah Meninggal</option>
-                                    <option value="Lainnya">Lainnya</option>
+                                <select class="form-control" id="pekerjaanwali" name="pekerjaanwali" >
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Tidak Bekerja" ? 'selected' : '' }} value="Tidak Bekerja">Tidak Bekerja</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Nelayan" ? 'selected' : '' }} value="Nelayan">Nelayan</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Petani" ? 'selected' : '' }} value="Petani">Petani</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Peternak" ? 'selected' : '' }} value="Peternak">Peternak</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "PNS/TNI/POLRI" ? 'selected' : '' }} value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Karyawan Swasta" ? 'selected' : '' }} value="Karyawan Swasta">Karyawan Swasta</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Pedagang Kecil" ? 'selected' : '' }} value="Pedagang Kecil">Pedagang Kecil</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Pedagang Besar" ? 'selected' : '' }} value="Pedagang Besar">Pedagang Besar</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Wiraswasta" ? 'selected' : '' }} value="Wiraswasta">Wiraswasta</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Wirausaha" ? 'selected' : '' }} value="Wirausaha">Wirausaha</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Buruh" ? 'selected' : '' }} value="Buruh">Buruh</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Pensiunan" ? 'selected' : '' }} value="Pensiunan">Pensiunan</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Tenaga Kerja Indonesia" ? 'selected' : '' }} value="Tenaga Kerja Indonesia">Tenaga Kerja Indonesia</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Tidak dapat Diterapkan" ? 'selected' : '' }} value="Tidak dapat Diterapkan">Tidak dapat Diterapkan</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Sudah Meninggal" ? 'selected' : '' }} value="Sudah Meninggal">Sudah Meninggal</option>
+                                    <option {{ ($ppdbs->pekerjaanwali) == "Lainnya" ? 'selected' : '' }} value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="penghasilanwali">Penghasilan Wali</label>
+                            <label class="col-sm-2 col-form-label" for="penghasilanwali">Penghasilan Wali Perbulan</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="penghasilanwali" name="penghasilanwali" value="{{ $ppdbs->penghasilanwali }}">
-                                    <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
-                                    <option value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
-                                    <option value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
-                                    <option value="Rp.500.000 - Rp.999.999">Rp.500.000 - Rp.999.999</option>
-                                    <option value="Rp.1.000.000 - Rp.2.000.000">Rp.1.000.000 - Rp.2.000.000</option>
-                                    <option value="Rp.2.000.000 - Rp.5.000.000">Rp.2.000.000 - Rp.5.000.000</option>
-                                    <option value="Rp.5.000.000 - Rp.20.000.000">Rp.5.000.000 - Rp.20.000.000</option>
-                                    <option value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
+                                <select class="form-control" id="penghasilanwali" name="penghasilanwali">
+                                    <option {{ ($ppdbs->penghasilananwali) == "Tidak Berpenghasilan" ? 'selected' : '' }} value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Kurang dari Rp.500.000" ? 'selected' : '' }} value="Kurang dari Rp.500.000">Kurang dari Rp.500.000</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Kurang dari Rp.1.000.000" ? 'selected' : '' }} value="Kurang dari Rp.1.000.000">Kurang dari Rp.1.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Rp.500.000 - Rp.999.999" ? 'selected' : '' }} value="Rp.500.000 - Rp.999.999">Rp.500.000 - Rp.999.999</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Rp.1.000.000 - Rp.2.000.000" ? 'selected' : '' }} value="Rp.1.000.000 - Rp.2.000.000">Rp.1.000.000 - Rp.2.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Rp.2.000.000 - Rp.5.000.000" ? 'selected' : '' }} value="Rp.2.000.000 - Rp.5.000.000">Rp.2.000.000 - Rp.5.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Rp.5.000.000 - Rp.20.000.000" ? 'selected' : '' }} value="Rp.5.000.000 - Rp.20.000.000">Rp.5.000.000 - Rp.20.000.000</option>
+                                    <option {{ ($ppdbs->penghasilananwali) == "Lebih dari Rp.20.000.000" ? 'selected' : '' }} value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3">
+                <div class="card card-primary mb-3">
                     <div class="card-header">
                         <div class="card-tittle h4">Data lainnya</div>
                     </div>
@@ -457,51 +454,29 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="tempattinggal">Tempat tinggal ketika Sekolah di SMA Wahidiyah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="tempattinggal" name="tempattinggal" value="{{ $ppdbs->tempattinggal }}">
-                                    <option value="0">Tinggal Bersama Orang Tua</option>
-                                    <option value="1">Tinggal di Asrama PonPes Kedunglo</option>
+                                <select class="form-control" id="tempattinggal" name="tempattinggal">
+                                    <option {{ ($ppdbs->tempattinggal ) == "0" ? 'selected' : '' }} value="0">Tinggal Bersama Orang Tua</option>
+                                    <option {{ ($ppdbs->tempattinggal ) == "1" ? 'selected' : '' }} value="1">Tinggal di Asrama PonPes Kedunglo</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label" for="kategorialumni">Apakah Alumni SMP Wahidiyah</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="kategorialumni" name="kategorialumni" value="{{ $ppdbs->kategorialumni }}">
-                                    <option value="0">Bukan Alumni SMP Wahidiyah</option>
-                                    <option value="1">Alumni SMP Wahidiyah</option>
+                                <select class="form-control" id="kategorialumni" name="kategorialumni">
+                                    <option {{ ($ppdbs->kategorialumni ) == "0" ? 'selected' : '' }} value="0">Bukan Alumni SMP Wahidiyah</option>
+                                    <option {{ ($ppdbs->kategorialumni ) == "1" ? 'selected' : '' }} value="1">Alumni SMP Wahidiyah</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label" for="katorgtuapersonil">Apakah Orang Tua Personil Yayasan Perjuangan Wahidiyah Pusat di Kediri</label>
+                            <label class="col-sm-2 col-form-label" for="katorgtuapersonil">Apakah Orang Tua Personil Yayasan Perjuangan Wahidiyah Pusat</label>
                             <div class="col-sm-4">
-                                <select class="form-control" id="katorgtuapersonil" name="katorgtuapersonil" value="{{ $ppdbs->katorgtuapersonil }}">
-                                    <option value="0">Bukan Personil</option>
-                                    <option value="1">Pernosil ( 5 s.d. 10 Thn masa kerja)</option>
-                                    <option value="2">Pernosil ( Lebih dari 10 Thn masa kerja)</option>
+                                <select class="form-control" id="katorgtuapersonil" name="katorgtuapersonil" >
+                                    <option {{ ($ppdbs->katorgtuapersonil ) == "0" ? 'selected' : '' }} value="0">Bukan Personil</option>
+                                    <option {{ ($ppdbs->katorgtuapersonil ) == "1" ? 'selected' : '' }} value="1">Pernosil ( 5 s.d. 10 Thn masa kerja)</option>
+                                    <option {{ ($ppdbs->katorgtuapersonil ) == "2" ? 'selected' : '' }} value="2">Pernosil ( Lebih dari 10 Thn masa kerja)</option>
                                 </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <div class="card-tittle text-center h4">Konfirmasi</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="container">
-                            <div class="row justify-content-sm-center">
-                                <div class="col col-sm-8">
-                                    <h4 class="text-center">Pastikan data yang anda masukkan benar. Silahkan lanjutkan pendaftaran dengan klik tombol dibawah ini.</h4>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col text-center">
-                                        <button class="btn btn-primary">Simpan Perubahan</button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

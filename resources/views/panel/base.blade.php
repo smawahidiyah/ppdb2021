@@ -7,12 +7,12 @@
 
   <title>PPDB SMA Wahidiyah</title>
 
-  <!-- Font Awesome Icons -->
+
   <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
   @yield('css')
-  <!-- Theme style -->
+
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
-  <!-- Google Font: Source Sans Pro -->
+
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -29,7 +29,6 @@
         </div>
       </div>
     </div>
-
   </div>
   <aside class="control-sidebar control-sidebar-dark">
     <div class="p-3">
@@ -37,7 +36,7 @@
       <p>Sidebar content</p>
     </div>
   </aside>
-
+</div>
   @yield('footer')
 
 <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
