@@ -48,8 +48,8 @@ Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('/export', 'PanelController@export')->name('export');
     Route::get('getdatapd', 'DataPDController@getdatapd')->name('getdatapd');
     Route::get('datapd', 'DataPDController@indexpd')->name('datapd');
-    Route::get('/edit/{nisnpd}', 'PanelController@edit')->name('edit');
-    Route::post('/updatepd', 'PpdbController@updatepd')->name('updatepd');
+    Route::get('/edit/{id}', 'PanelController@edit')->name('edit');
+    Route::post('/updatepd/{id}', 'PpdbController@updatepd')->name('updatepd');
 });
 
 

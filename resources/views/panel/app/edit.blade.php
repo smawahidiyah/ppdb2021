@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="container container-fluid py-5">
-    <form method="post" action="{{route('updatepd')}}">
+    <form method="post" action="{{route('updatepd', $ppdbs->id)}}">
     @csrf
         <div class="card">
             <div class="card-header">
@@ -17,6 +17,10 @@
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
+                        </div>
+                @elseif(($errors->any())==0)
+                        <div class="alert alert-danger">
+                            <span class="badge">Berhasil</span>
                         </div>
                 @endif
                 <div class="card card-primary mb-3">

@@ -72,10 +72,28 @@ class PpdbController extends Controller
         }
     }
 
-    public function updatepd(Request $request, Request $id)
+    public function updatepd(Request $request, $id)
     {
-        $id = $id->all();
-        ddd($id);
-        Ppdb::where('id', $id)->update($request->all());
+        $validated = Validator::make($request->all(), [
+            'namapd' => 'required',
+            'kelaminpd' => 'required',
+            'nisnpd' => 'required|max:10|min:10',
+            'nikpd' => 'required|max:16|min:16',
+            'tempatlahirpd' => 'required',
+            'tanggallahirpd' => 'required',
+            'namaayah' => 'required',
+            'namaibu' => 'required',
+        ], [
+            'nikpd.max' => 'NIK yang digunakan tidak boleh lebih dari 16 digit',
+            'nikpd.min' => 'NIK yang digunakan tidak boleh kurang dari 16 digit',
+            'nisnpd.max' => 'NISN yang digunakan tidak boleh lebih dari 10 digit',
+            'nisnpd.min' => 'NISN yang digunakan tidak boleh kurang dari 10 digit'
+        ]);
+        $updatedata = Ppdb::where('id', $id)->update($request->except(['_method', '_token']));
+        if ($validated->fails()) {
+            return redirect()->back()->withErrors($validated)->withInput();
+        }elseif (($updatedata)== 1) {
+            return redirect()->back()->with('updatedata', 'berhasil diperbarui');
+        }
     }
 }
