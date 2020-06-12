@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="container container-fluid py-5">
-    <form method="post" action="#">
+    <form method="post" action="{{route('updatepd')}}">
     @csrf
         <div class="card">
             <div class="card-header">
@@ -377,7 +377,7 @@
                         <div class="form-group row">
                             <label for="namawali" class="col-sm-2 col-form-label">Nama Wali</label>
                             <div class="col-sm-10">
-                                <input type="text" name="namawali" id="namawali" class="form-control" required value="{{ $ppdbs->namawali }}">
+                                <input type="text" name="namawali" id="namawali" class="form-control" value="{{ $ppdbs->namawali }}">
                                 <small class="form-text text-muted">Sesuai dengan Kartu Keluarga atau Akta Kelahiran (Tanpa Gelar)</small>
                             </div>
                         </div>
@@ -479,6 +479,17 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <button type="submit" class="btn btn-lg btn-primary">Simpan Perubahan Data</button>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

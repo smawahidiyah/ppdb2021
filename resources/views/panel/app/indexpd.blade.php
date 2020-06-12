@@ -86,7 +86,7 @@ $(function() {
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false },
             { data: 'namapd', name: 'namapd' },
             { data: 'nisnpd', name: 'nisnpd' },
-            { data: 'kelaminpd', name: 'kelaminpd'},
+            { data: 'kelaminpd', name: 'kelaminpd', orderable: false, searchable: false},
             { data: 'tempatlahirpd', name: 'tempatlahirpd'},
             { data: 'tanggallahirpd', name: 'tanggallahirpd'},
             { data: 'action', name: 'action', orderable: false, searchable: false}

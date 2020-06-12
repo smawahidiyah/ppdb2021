@@ -49,6 +49,7 @@ Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('getdatapd', 'DataPDController@getdatapd')->name('getdatapd');
     Route::get('datapd', 'DataPDController@indexpd')->name('datapd');
     Route::get('/edit/{nisnpd}', 'PanelController@edit')->name('edit');
+    Route::post('/updatepd', 'PpdbController@updatepd')->name('updatepd');
 });
 
 

@@ -71,4 +71,11 @@ class PpdbController extends Controller
             return view('ppdb.hasilcek')->with('cek', $cek);
         }
     }
+
+    public function updatepd(Request $request, Request $id)
+    {
+        $id = $id->all();
+        ddd($id);
+        Ppdb::where('id', $id)->update($request->all());
+    }
 }
