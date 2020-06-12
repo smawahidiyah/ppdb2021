@@ -11,19 +11,20 @@ class DataPDController extends Controller
     public function indexpd()
     {
         $ppdbs = Ppdb::count('namapd');
-        return view('panel.app.indexpd', ['ppdbs'=>$ppdbs]);
+        $countL = Ppdb::where('kelaminpd', 'L')->count();
+        $countP = Ppdb::where('kelaminpd', 'P')->count();
+        return view('panel.app.indexpd', ['ppdbs'=>$ppdbs])->with('countL', $countL)->with('countP', $countP);
     }
 
     public function getdatapd()
     {
-        $ppdb = Ppdb::select(['id', 'namapd', 'nisnpd', 'namaayah', 'telpayah', 'namaibu', 'telpibu']);
+        $ppdb = Ppdb::select(['id', 'namapd', 'nisnpd', 'kelaminpd', 'tempatlahirpd', 'tanggallahirpd']);
 
         return DataTables::eloquent($ppdb)
         ->addIndexColumn()
         ->addColumn('action', function ($ppdb) {
             return '<div class="btn-group" role="group" aria-label="Basic example">
                       <a href="#" type="button" class="btn btn-md btn-primary">Lihat</a>
-                      <a href="#" type="button" class="btn btn-md btn-danger">Hapus</a>
                       <a href="'.route('edit', $ppdb->id).'"type="button" class="btn btn-md btn-success">Edit</a>
                     </div>';
         })

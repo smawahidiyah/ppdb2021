@@ -12,11 +12,24 @@
 <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box">
         <span class="info-box-icon bg-info elevation-1">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-user-plus"></i>
         </span>
         <div class="info-box-content">
             <span class="info-box-text">Total PD terdaftar</span>
             <span class="info-box-number">{{$ppdbs}} Orang</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+        <span class="info-box-icon bg-warning elevation-1">
+            <i class="fas fa-users"></i>
+        </span>
+        <div class="info-box-content">
+            <span class="info-box-text">Total PD terdaftar</span>
+            <span class="info-box-number">Laki - laki : {{$countL}}</span>
+            <span class="info-box-number">Perempuan   : {{$countP}}</span>
         </div>
     </div>
 </div>
@@ -44,10 +57,9 @@
                         <th>No.</th>
                         <th>Name</th>
                         <th>NISN</th>
-                        <th>Nama Ayah</th>
-                        <th>No. Telp Ayah</th>
-                        <th>Nama Ibu</th>
-                        <th>No. Telp Ibu</th>
+                        <th>JK</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
                         <th>Pilihan</th>
                     </tr>
                 </thead>
@@ -74,10 +86,9 @@ $(function() {
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false },
             { data: 'namapd', name: 'namapd' },
             { data: 'nisnpd', name: 'nisnpd' },
-            { data: 'namaayah', name: 'namaayah'},
-            { data: 'telpayah', name: 'telpayah'},
-            { data: 'namaibu', name: 'namaibu'},
-            { data: 'telpibu', name: 'telpibu'},
+            { data: 'kelaminpd', name: 'kelaminpd'},
+            { data: 'tempatlahirpd', name: 'tempatlahirpd'},
+            { data: 'tanggallahirpd', name: 'tanggallahirpd'},
             { data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
