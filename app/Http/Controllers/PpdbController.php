@@ -89,11 +89,13 @@ class PpdbController extends Controller
             'nisnpd.max' => 'NISN yang digunakan tidak boleh lebih dari 10 digit',
             'nisnpd.min' => 'NISN yang digunakan tidak boleh kurang dari 10 digit'
         ]);
+
         $updatedata = Ppdb::where('id', $id)->update($request->except(['_method', '_token']));
+
         if ($validated->fails()) {
             return redirect()->back()->withErrors($validated)->withInput();
-        }elseif (($updatedata)== 1) {
-            return redirect()->back()->with('updatedata', 'berhasil diperbarui');
+        }elseif ($updatedata) {
+            return redirect('/datapd')->with(['success' => 'Data berhasil diperbarui.']);
         }
     }
 }

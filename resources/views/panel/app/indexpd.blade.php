@@ -9,6 +9,22 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small class="text-muted">11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+        {{$message}}
+        </div>
+    </div>
+@endif
+
 <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box">
         <span class="info-box-icon bg-info elevation-1">
@@ -68,7 +84,6 @@
     </div>
 </div>
 @endsection
-
 
 @section('script')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

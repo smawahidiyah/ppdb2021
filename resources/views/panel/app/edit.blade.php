@@ -18,10 +18,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                @elseif(($errors->any())==0)
-                        <div class="alert alert-danger">
-                            <span class="badge">Berhasil</span>
-                        </div>
                 @endif
                 <div class="card card-primary mb-3">
                     <div class="card-header">
