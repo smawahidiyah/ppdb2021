@@ -24,7 +24,7 @@ class DataPDController extends Controller
         ->addIndexColumn()
         ->addColumn('action', function ($ppdb) {
             return '<div class="btn-group" role="group" aria-label="Basic example">
-                      <a href="#" type="button" class="btn btn-md btn-primary">Lihat</a>
+                      <a href="'.route('show', $ppdb->id).'" type="button" class="btn btn-md btn-primary">Lihat</a>
                       <a href="'.route('edit', $ppdb->id).'"type="button" class="btn btn-md btn-success">Edit</a>
                     </div>';
         })

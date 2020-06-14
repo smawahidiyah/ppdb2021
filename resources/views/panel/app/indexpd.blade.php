@@ -4,26 +4,11 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
+@toastr_css
 
 @endsection
 
 @section('content')
-
-@if ($message = Session::get('success'))
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <img src="..." class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small class="text-muted">11 mins ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body">
-        {{$message}}
-        </div>
-    </div>
-@endif
 
 <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box">
@@ -97,6 +82,7 @@ $(function() {
         processing: true,
         serverSide: true,
         ajax: '{!! route('getdatapd') !!}',
+        lengthMenu: [[100, 150, 200, -1], [100, 150, 200, "Semua"]],
         columns: [
             { data: 'DT_RowIndex', name: 'DT_RowIndex', searchable: false, orderable: false },
             { data: 'namapd', name: 'namapd' },
@@ -109,5 +95,6 @@ $(function() {
     });
 });
 </script>
-
+@toastr_js
+@toastr_render
 @endsection

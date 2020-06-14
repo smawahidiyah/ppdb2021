@@ -50,6 +50,7 @@ Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('datapd', 'DataPDController@indexpd')->name('datapd');
     Route::get('/edit/{id}', 'PanelController@edit')->name('edit');
     Route::post('/updatepd/{id}', 'PpdbController@updatepd')->name('updatepd');
+    Route::get('/show/{id}', 'PpdbController@show')->name('show');
 });
 
 

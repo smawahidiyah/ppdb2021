@@ -95,7 +95,37 @@ class PpdbController extends Controller
         if ($validated->fails()) {
             return redirect()->back()->withErrors($validated)->withInput();
         }elseif ($updatedata) {
-            return redirect('/datapd')->with(['success' => 'Data berhasil diperbarui.']);
+            toastr()->success('Data berhasil diperbarui');
+            return redirect('/datapd');
         }
+    }
+
+    public function show($id)
+    {
+        $ppdbs = Ppdb::where('id', $id)->get();
+        $ppdbs->map(function($katalumnni){
+            if ($katalumnni->kategorialumni == 0) {
+                return $katalumnni->kategorialumni = 'Bukan Alumni';
+            }elseif($katalumnni->kategorialumni == 1){
+                return $katalumnni->kategorialumni = 'Alumni SMP Wahidiyah';
+            }
+        });
+        $ppdbs->map(function($tempattinggal){
+            if ($tempattinggal->tempattinggal == 0) {
+                return $tempattinggal->tempattinggal = 'Bersama Orang Tua';
+            }elseif($tempattinggal->tempattinggal == 1){
+                return $tempattinggal->tempattinggal = 'Asrama / Pondok Pesantren';
+            }
+        });
+        $ppdbs->map(function($otpersonil){
+            if ($otpersonil->katorgtuapersonil == 0) {
+                return $otpersonil->katorgtuapersonil = 'Bukan Personil';
+            }elseif($otpersonil->katorgtuapersonil == 1){
+                return $otpersonil->katorgtuapersonil = 'Personil 5 s.d. 10 Tahun';
+            }else{
+                return $otpersonil->katorgtuapersonil = 'Personil lebih dari 10 Tahun';
+            }
+        });
+        return view('panel.app.show')->with('ppdbs', $ppdbs);
     }
 }
