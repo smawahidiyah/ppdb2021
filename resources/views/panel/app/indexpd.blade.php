@@ -56,7 +56,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Name</th>
+                        <th>Nama</th>
                         <th>NISN</th>
                         <th>JK</th>
                         <th>Tempat Lahir</th>
