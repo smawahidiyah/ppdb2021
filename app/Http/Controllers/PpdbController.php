@@ -128,4 +128,16 @@ class PpdbController extends Controller
         });
         return view('panel.app.show')->with('ppdbs', $ppdbs);
     }
+
+    public function biaya(Request $request)
+    {
+        $ppdbs = $request->all();
+        $cek = DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists();
+        if (DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists()== TRUE) {
+            $ppdbs = DB::table('ppdbs')->select('nisnpd', 'namapd', 'tempatlahirpd', 'tanggallahirpd')->where('nisnpd', $ppdbs['nisnpd'] )->get();
+            return view('ppdb.hasilcek')->with('ppdbs', $ppdbs)->with('cek', $cek);
+        }else{
+            return view('ppdb.hasilcek')->with('cek', $cek);
+        }
+    }
 }
