@@ -43,6 +43,8 @@ Route::get('/postcek', 'PpdbController@postcek')->name('postcek');
 
 Route::get('/register', 'AuthController@register')->name('register');
 
+Route::get('/biaya/{nisnpd}', 'PpdbController@biaya')->name('biaya');
+
 Route::middleware(['AuthSentinel'])->group(function(){
     Route::get('/dasbor', 'PanelController@dasbor')->name('dasbor');
     Route::get('/export', 'PanelController@export')->name('export');

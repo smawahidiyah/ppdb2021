@@ -129,15 +129,25 @@ class PpdbController extends Controller
         return view('panel.app.show')->with('ppdbs', $ppdbs);
     }
 
-    public function biaya(Request $request)
+    public function biaya($nisnpd)
     {
-        $ppdbs = $request->all();
-        $cek = DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists();
-        if (DB::table('ppdbs')->where('nisnpd', $ppdbs['nisnpd'])->exists()== TRUE) {
-            $ppdbs = DB::table('ppdbs')->select('nisnpd', 'namapd', 'tempatlahirpd', 'tanggallahirpd')->where('nisnpd', $ppdbs['nisnpd'] )->get();
-            return view('ppdb.hasilcek')->with('ppdbs', $ppdbs)->with('cek', $cek);
-        }else{
-            return view('ppdb.hasilcek')->with('cek', $cek);
-        }
+        $nisn = DB::table('ppdbs')->where('nisnpd', $nisnpd)->get();
+        $pondok = $nisn->map(function($pondok){
+            if ($pondok->tempattinggal == 0) {
+                return $pondok = '0';
+            }elseif ($pondok->tempattinggal == 1) {
+                return $pondok = '832500';
+            }
+        });
+
+        $alumni = $nisn->map(function($alumni){
+            if ($alumni->kategorialumni == 0) {
+                return $alumni = '650000';
+            }elseif ($alumni->kategorialumni == 1) {
+                return $alumni = '325000';
+            }
+        });
+
+        ddd($alumni);
     }
 }
