@@ -45,6 +45,10 @@
                         <dd class="col-sm-9"> {{ $ppdb->kodepos }} </dd>
                         <dt class="col-sm-3">Anak Ke</dt>
                         <dd class="col-sm-9"> {{ $ppdb->anakkeberapa }} </dd>
+                        <dt class="col-sm-3">Asal Sekolah (SMP/MTs)</dt>
+                        <dd class="col-sm-9"> {{ $ppdb->asalsekolah }} </dd>
+                        <dt class="col-sm-3">No. KIP</dt>
+                        <dd class="col-sm-9"> {{ $ppdb->nokip }} </dd>
                     </dl>
             </div>
         </div>

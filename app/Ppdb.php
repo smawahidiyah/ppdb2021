@@ -25,6 +25,8 @@ class ppdb extends Model
         'provinsi',
     	'kodepos',
     	'anakkeberapa',
+        'asalsekolah',
+        'nokip',
     	'namaayah',
     	'nikayah',
     	'tahunlahirayah',

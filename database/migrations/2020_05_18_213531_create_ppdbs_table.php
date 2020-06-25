@@ -33,6 +33,8 @@ class CreatePpdbsTable extends Migration
             $table->string('provinsi')->nullable();
             $table->string('kodepos')->nullable();
             $table->string('anakkeberapa')->nullable();
+            $table->string('asalsekolah')->nullable();
+            $table->string('nokip')->nullable();
             $table->string('namaayah');
             $table->string('nikayah')->nullable();
             $table->string('tahunlahirayah')->nullable();

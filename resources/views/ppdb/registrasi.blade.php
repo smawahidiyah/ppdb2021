@@ -206,6 +206,20 @@
                                 <small class="form-text text-muted">Sesuai dengan urutan Kartu Keluarga</small>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="asalsekolah" class="col-sm-2 col-form-label">Asal Sekolah (SMP/MTs)</label>
+                            <div class="col-sm-2">
+                                <input type="text" name="asalsekolah" id="asalsekolah" class="form-control" value="{{ old('asalsekolah') }}">
+                                <small class="form-text text-muted">Sebutkan nama SMP/MTs asal</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nokip" class="col-sm-2 col-form-label">Nomor KIP (Kartu Indonesia Pintar) jika ada</label>
+                            <div class="col-sm-2">
+                                <input type="text" name="nokip" id="nokip" class="form-control" value="{{ old('nokip') }}">
+                                <small class="form-text text-muted">Masukkan nomor KIP yang tertera pada kartu (Jika ada).</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card mb-3">
