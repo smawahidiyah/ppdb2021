@@ -39,6 +39,8 @@ class PpdbExport implements FromCollection, WithHeadings, ShouldAutoSize
             'provinsi',
             'kodepos',
             'Anak Ke',
+            'Asal Sekolah',
+            'No. KIP',
             'Nama Ayah',
             'NIK Ayah',
             'Tahun Lahir Ayah',
