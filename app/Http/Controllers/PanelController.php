@@ -20,7 +20,9 @@ class PanelController extends Controller
 
     public function export()
     {
-        return Excel::download(new PpdbExport, 'ppbd.xlsx');
+        $export = new PpdbExport;
+        Excel::download($export, 'ppbd.xlsx');
+        ddd('Row count: '. $export->getRowCount());
     }
 
     public function edit($id)
