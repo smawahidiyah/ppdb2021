@@ -150,4 +150,15 @@ class PpdbController extends Controller
 
         ddd($alumni);
     }
+
+    public function delete($id)
+    {
+        $ppdbs = Ppdb::find($id);
+        $delete = $ppdbs->delete();
+        if ($delete) {
+            toastr()->error('Data berhasil dihapus');
+            return redirect('/datapd');
+        }
+    }
+
 }

@@ -98,3 +98,10 @@ $(function() {
 @toastr_js
 @toastr_render
 @endsection
+<script>
+    function deleteUser(id) {
+        $('#deleteUser').modal('show');
+        $('.name').text(id);
+        $('#deleteUserForm').attr()
+    }
+</script>

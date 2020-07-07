@@ -7,26 +7,11 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class PpdbExport implements FromCollection, WithHeadings, ShouldAutoSize, ToModel
+class PpdbExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    private $rows = 0;
-
-    public function model(array $row)
-    {
-        ++$this->rows;
-        return new Ppdb([
-            'name' => $row[0],
-
-        ]);
-    }
-
-    public function getRowCount(): int
-    {
-        return $this->rows;
-    }
 
     public function collection()
     {
