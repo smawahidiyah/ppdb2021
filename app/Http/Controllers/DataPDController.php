@@ -26,21 +26,7 @@ class DataPDController extends Controller
             return '<div class="btn-group" role="group" aria-label="Basic example">
                       <a href="'.route('show', $ppdb->id).'" type="button" class="btn btn-md btn-primary">Lihat</a>
                       <a href="'.route('edit', $ppdb->id).'" type="button" class="btn btn-md btn-success">Edit</a>
-                      <a href="" type="button" class="btn btn-md btn-danger" data-toggle="modal" onclick="deleteUser">hapus</a>
-                        <div class="modal-body">
-                        <h5 class="modal-title">Konfirmasi hapus</h5>
-                        </div>
-                        <div class="modal-footer">
-
-                        <form method="POST" class="d-inline" id="deleteUserForm">
-                                @method('GET')
-                                @csrf
-                        <button type="submit" class="btn btn-lg btn-success delete" style="font-size:12px">
-                        <strong>YES</strong>
-                        </button>
-
-                        </form>
-                        </div>
+                      <a href="" type="button" class="btn btn-md btn-danger" data-toggle="modal" onclick="deleteUser" data-target="#deleteUser">hapus</a>
                     </div>';
         })
         ->toJson();

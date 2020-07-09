@@ -68,6 +68,20 @@
         </div>
     </div>
 </div>
+<div class="modal-body">
+                        <h5 class="modal-title">Konfirmasi hapus</h5>
+                        </div>
+                        <div class="modal-footer">
+
+                        <form method="POST" class="d-inline" id="deleteUserForm">
+                                @method('GET')
+                                @csrf
+                        <button type="submit" class="btn btn-lg btn-success delete" style="font-size:12px">
+                        <strong>YES</strong>
+                        </button>
+
+                        </form>
+                        </div>
 @endsection
 
 @section('script')
