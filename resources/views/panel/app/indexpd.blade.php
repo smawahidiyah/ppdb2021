@@ -1,8 +1,7 @@
 @extends('panel.base')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.7/css/rowReorder.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
 @toastr_css
 
@@ -45,7 +44,25 @@
         </div>
     </a>
 </div>
-
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Konfirmasi hapus data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin akan menghapus data tersebut?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" name="confirmButton" id="confirmButton">Hapus data</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="col-sm-12">
     <div class="card">
         <div class="card-header">
@@ -68,28 +85,41 @@
         </div>
     </div>
 </div>
-<div class="modal-body">
-                        <h5 class="modal-title">Konfirmasi hapus</h5>
-                        </div>
-                        <div class="modal-footer">
 
-                        <form method="POST" class="d-inline" id="deleteUserForm">
-                                @method('GET')
-                                @csrf
-                        <button type="submit" class="btn btn-lg btn-success delete" style="font-size:12px">
-                        <strong>YES</strong>
-                        </button>
 
-                        </form>
-                        </div>
+
 @endsection
 
 @section('script')
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/rowreorder/1.2.7/js/dataTables.rowReorder.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+<script>
+var user_id;
+$( document ).on('click', '.delete', function(){
+  user_id = $(this).attr('id');
+  $('#deleteModal').modal('show');
+ });
+$('#confirmButton').click(function(){
+    $.ajaxSetup({
+        type: 'post',
+        url: "delete/" + user_id,
+    });
+    $.ajax({
+        beforeSend:function(){
+            $('confirmButton').text('menghapus data...');
+        },
+        success:function(data){
+            setTimeout(function(){
+                $('#deleteModal').modal('hide');
+                $('datapd').dataTable().ajax.reload();
+            }, 2000);
+        }
+    });
+});
+
+</script>
 <script>
 $(function() {
     $('#datapd').DataTable({
@@ -112,10 +142,4 @@ $(function() {
 @toastr_js
 @toastr_render
 @endsection
-<script>
-    function deleteUser(id) {
-        $('#deleteUser').modal('show');
-        $('.name').text(id);
-        $('#deleteUserForm').attr()
-    }
-</script>
+
