@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PpdbController@index');
 
-Route::get('/ppdb_smawa_2020', 'PpdbController@register')->name('ppdb_smawa_2020');
 
 Route::post('/postregister', 'PpdbController@postregister')->name('postregister');
 
