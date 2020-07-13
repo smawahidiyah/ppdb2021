@@ -103,8 +103,8 @@ $( document ).on('click', '.delete', function(){
  });
 $('#confirmButton').click(function(){
     $.ajaxSetup({
-        type: 'post',
-        url: "delete/" + user_id,
+        type: 'delete',
+         url: 'delete/'+user_id,
     });
     $.ajax({
         beforeSend:function(){
