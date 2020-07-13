@@ -45,7 +45,7 @@
             </p>
             <hr>
             <div class="d-flex flex-column flex-md-row">
-                <p>Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2020/2021 <strong style="color:red;">telah ditutup</strong>. Terimakasih atas patrisipasi anda.</p>
+                <p>Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2020/2021 <strong style="color:red;">telah ditutup</strong>. Terimakasih atas partisipasi anda.</p>
             </div>
           </div>
         </div>
