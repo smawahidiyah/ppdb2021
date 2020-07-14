@@ -12,7 +12,7 @@ class PpdbController extends Controller
 {
     public function index()
     {
-        return view('ppdb.close');
+        return view('ppdb.index');
     }
 
 
