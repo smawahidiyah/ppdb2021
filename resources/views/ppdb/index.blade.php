@@ -41,7 +41,7 @@
           <div class="col-md-8 order-md-1 text-center text-md-left pr-md-5">
             <h1 class="mb-3">PPDB Online SMA Wahidiyah Kediri</h1>
             <p class="lead mb-4">
-              Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2020/2021.
+              Pendaftaran Peserta Didik Baru SMA Wahidiyah Kediri Tahun Pelajaran 2021/2022.
             </p>
             <p>
                 <strong>Pendaftaran peserta didik baru silahkan klik tombol dibawah ini.</strong>
@@ -58,7 +58,7 @@
             </div>
             <hr>
             <div class="d-flex flex-column flex-md-row">
-                <p>Untuk pendaftaran peserta didik pindah/mutasi silahkan menghubungi contact person sekolah ( 085231196513 / 085774015717 )</p>
+                <p>Untuk pendaftaran peserta didik pindah/mutasi silahkan menghubungi contact person sekolah ( 081575371353/085235573131 )</p>
             </div>
           </div>
         </div>
