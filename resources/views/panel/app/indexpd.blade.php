@@ -58,7 +58,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-danger" name="confirmButton" id="confirmButton">Hapus data</button>
+        <button type="button" class="btn btn-danger" name="SubmitDeleteProductForm" id="SubmitDeleteProductForm">Hapus data</button>
       </div>
     </div>
   </div>
@@ -96,29 +96,31 @@
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
 <script>
-var user_id;
-$( document ).on('click', '.delete', function(){
-  user_id = $(this).attr('id');
-  $('#deleteModal').modal('show');
- });
-$('#confirmButton').click(function(){
-    $.ajaxSetup({
-        type: 'delete',
-         url: 'delete/'+user_id,
+$(document).ready(function () {
+    var deleteID;
+    $('body').on('click', '#getDeleteId', function () {
+        deleteID = $(this).data('id');
     });
-    $.ajax({
-        beforeSend:function(){
-            $('confirmButton').text('menghapus data...');
-        },
-        success:function(data){
-            setTimeout(function(){
-                $('#deleteModal').modal('hide');
-                $('datapd').dataTable().ajax.reload();
-            }, 2000);
-        }
+    $('#SubmitDeleteProductForm').click(function(e) {
+        e.preventDefault();
+        var id = deleteID;
+        var route = '{{route('delete', "idpd")}}';
+        route = route.replace('idpd', id);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: route,
+            method: 'get',
+            success: function (result) {
+                    $('#deleteModal').modal('hide');
+                    window.location.reload();
+            }
+        });
     });
 });
-
 </script>
 <script>
 $(function() {
@@ -142,4 +144,3 @@ $(function() {
 @toastr_js
 @toastr_render
 @endsection
-

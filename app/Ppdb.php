@@ -22,11 +22,11 @@ class ppdb extends Model
     	'kelurahan',
     	'kecamatan',
     	'kabupatenkota',
-        'provinsi',
+      'provinsi',
     	'kodepos',
     	'anakkeberapa',
-        'asalsekolah',
-        'nokip',
+      'asalsekolah',
+      'nokip',
     	'namaayah',
     	'nikayah',
     	'tahunlahirayah',
@@ -43,11 +43,11 @@ class ppdb extends Model
     	'nikwali',
     	'pekerjaanwali',
     	'penghasilanwali',
-        'telpayah',
-        'telpibu',
-        'telpwali',
-        'tempattinggal',
-        'kategorialumni',
-        'katorgtuapersonil'
+      'telpayah',
+      'telpibu',
+      'telpwali',
+      'tempattinggal',
+      'kategorialumni',
+      'katorgtuapersonil'
     ];
 }
